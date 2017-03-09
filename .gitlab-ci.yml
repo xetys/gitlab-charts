@@ -1,14 +1,11 @@
 pages:
-  image: alpine
+  image: registry.gitlab.com/markpundsack/alpine-helm
   stage: deploy
-  before_script:
-    - apk update
-    - apk add curl
-    - curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get | bash
   script:
+    - helm init || echo Ignoring error
     - mkdir .public
-    - (cd .public; for dir in ../charts/*; do ../helm package ../charts/$dir; done)
-    - ./helm repo index .public --url https://charts.gitlab.io
+    - (cd .public; for dir in ../charts/*; do helm package ../charts/$dir; done)
+    - helm repo index .public --url https://charts.gitlab.io
     - mv .public public
   artifacts:
     paths:
