@@ -1,8 +1,16 @@
+image: registry.gitlab.com/charts/alpine-helm
+
+before_script:
+  - helm init || echo Ignoring error
+
+lint:
+  stage: test
+  script:
+    - helm lint charts/*
+
 pages:
-  image: registry.gitlab.com/markpundsack/alpine-helm
   stage: deploy
   script:
-    - helm init || echo Ignoring error
     - mkdir .public
     - (cd .public; for dir in ../charts/*; do helm package ../charts/$dir; done)
     - helm repo index .public --url https://charts.gitlab.io
