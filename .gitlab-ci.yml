@@ -1,14 +1,15 @@
 pages:
-  image: byrnedo/alpine-curl
+  image: alpine
   stage: deploy
   before_script:
-    - curl -o helm-v2.2.2-linux-amd64.tar.gz https://kubernetes-helm.storage.googleapis.com/helm-v2.2.2-linux-amd64.tar.gz
+    - apk add wget
+    - wget https://kubernetes-helm.storage.googleapis.com/helm-v2.2.2-linux-amd64.tar.gz
     - tar -zxvf helm-v2.0.0-linux-amd64.tgz
   script:
-  - mkdir .public
-  - (cd .public; for dir in ../charts/*; do helm package ../charts/$dir; done)
-  - ./helm repo index .public --url https://charts.gitlab.io
-  - mv .public public
+    - mkdir .public
+    - (cd .public; for dir in ../charts/*; do helm package ../charts/$dir; done)
+    - ./helm repo index .public --url https://charts.gitlab.io
+    - mv .public public
   artifacts:
     paths:
     - public
