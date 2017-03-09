@@ -3,7 +3,7 @@ pages:
   script:
   - mkdir .public
   - (cd .public; for dir in ../charts/*; do helm package ../charts/$dir; done)
-  helm repo index .public --url https://charts.gitlab.io
+  - helm repo index .public --url https://charts.gitlab.io
   - mv .public public
   artifacts:
     paths:
