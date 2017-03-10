@@ -82,6 +82,11 @@ spec:
         resources:
 {{ toYaml .Values.resources | indent 10 }}
       volumes:
+      {{ if .Values.runners.privileged }}
+      - name: var-run-docker-sock
+        hostPath:
+          path: /var/run/docker.sock
+      {{ end }}
       - name: scripts
         configMap:
           name: {{ template "fullname" . }}

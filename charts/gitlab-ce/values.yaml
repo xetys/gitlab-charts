@@ -1,7 +1,7 @@
 ## GitLab CE image
 ## ref: https://hub.docker.com/r/gitlab/gitlab-ce/tags/
 ##
-image: gitlab/gitlab-ce:8.16.1-ce.0
+image: gitlab/gitlab-ce:8.17.2-ce.0
 
 ## Specify a imagePullPolicy
 ## 'Always' if imageTag is 'latest', else set to 'IfNotPresent'
@@ -13,6 +13,8 @@ image: gitlab/gitlab-ce:8.16.1-ce.0
 ## ref: https://docs.gitlab.com/omnibus/settings/configuration.html#configuring-the-external-url-for-gitlab
 ##
 #externalUrl: http://your-domain.com/
+#registryExternalUrl: http://registry.your-domain.com/
+#mattermostExternalUrl: http://mattermost.your-domain.com/
 
 ## Change the initial default admin password if set. If not set, you'll be
 ## able to set it when you first visit your install.
@@ -29,6 +31,14 @@ serviceType: LoadBalancer
 sshPort: 22
 httpPort: 80
 httpsPort: 443
+mattermostPort: 8065
+registryPort: 8105
+workhorsePort: 8005
+prometheusPort: 9090
+nodeExporterPort: 9100
+
+## Configuration values for mattermost
+mattermostAppSecret: "gitlab"
 
 ## Configure resource requests and limits
 ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
@@ -63,6 +73,14 @@ persistence:
   ## ref: https://docs.gitlab.com/omnibus/settings/configuration.html#storing-git-data-in-an-alternative-directory
   ##
   gitlabData:
+    enabled: true
+    size: 10Gi
+    ## If defined, volume.beta.kubernetes.io/storage-class: <storageClass>
+    ## Default: volume.alpha.kubernetes.io/storage-class: default
+    ##
+    # storageClass:
+    accessMode: ReadWriteOnce
+  gitlabRegistry:
     enabled: true
     size: 10Gi
     ## If defined, volume.beta.kubernetes.io/storage-class: <storageClass>

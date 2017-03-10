@@ -72,6 +72,16 @@ spec:
           containerPort: 80
         - name: https
           containerPort: 443
+        - name: registry
+          containerPort: 8105
+        - name: mattermost
+          containerPort: 8065
+        - name: workhorse
+          containerPort: 8005
+        - name: prometheus
+          containerPort: 9090
+        - name: node-exporter
+          containerPort: 9100
         livenessProbe:
           httpGet:
             path: /help
@@ -97,6 +107,8 @@ spec:
           mountPath: /etc/gitlab
         - name: gitlab-data
           mountPath: /gitlab-data
+        - name: gitlab-registry
+          mountPath: /gitlab-registry
         resources:
 {{ toYaml .Values.resources | indent 10 }}
       volumes:
@@ -111,6 +123,13 @@ spec:
       {{- if .Values.persistence.gitlabData.enabled }}
         persistentVolumeClaim:
           claimName: {{ template "fullname" . }}-data
+      {{- else }}
+        emptyDir: {}
+      {{- end }}
+      - name: gitlab-registry
+      {{- if .Values.persistence.gitlabRegistry.enabled }}
+        persistentVolumeClaim:
+          claimName: {{ template "fullname" . }}-registry
       {{- else }}
         emptyDir: {}
       {{- end }}

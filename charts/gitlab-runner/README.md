@@ -6,7 +6,7 @@
 
 This chart deploys a GitLab Runner instance configured to run using the [Kubernetes executor](https://docs.gitlab.com/runner/install/kubernetes.html)
 
-For each new job it recieves from [GitLab CI](https://about.gitlab.com/gitlab-ci/), it will provision a new pod within the specified namespace to run it.
+For each new job it receives from [GitLab CI](https://about.gitlab.com/gitlab-ci/), it will provision a new pod within the specified namespace to run it.
 
 ## Prerequisites
 

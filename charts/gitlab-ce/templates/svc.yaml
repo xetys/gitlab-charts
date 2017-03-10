@@ -19,5 +19,20 @@ spec:
   - name: https
     port: {{ .Values.httpsPort | int }}
     targetPort: https
+  - name: mattermost
+    port: {{ .Values.mattermostPort | int }}
+    targetPort: mattermost
+  - name: registry
+    port: {{ .Values.registryPort | int }}
+    targetPort: registry
+  - name: workhorse
+    port: {{ .Values.workhorsePort | int }}
+    targetPort: workhorse
+  - name: prometheus
+    port: {{ .Values.prometheusPort | int }}
+    targetPort: prometheus
+  - name: node-exporter
+    port: {{ .Values.nodeExporterPort | int }}
+    targetPort: node-exporter
   selector:
     app: {{ template "fullname" . }}
