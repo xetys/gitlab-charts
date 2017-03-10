@@ -1,0 +1,27 @@
+dependencies:
+- condition: ""
+  enabled: false
+  name: gitlab-ce
+  repository: https://charts.gitlab.io/
+  tags: null
+  version: 0.1.5
+- condition: ""
+  enabled: false
+  name: gitlab-runner
+  repository: https://charts.gitlab.io/
+  tags: null
+  version: 0.1.0
+- condition: ""
+  enabled: false
+  name: minio
+  repository: https://kubernetes-charts.storage.googleapis.com/
+  tags: null
+  version: 0.0.4
+- condition: ""
+  enabled: false
+  name: nginx-lego
+  repository: https://kubernetes-charts.storage.googleapis.com/
+  tags: null
+  version: 0.2.1
+digest: sha256:ffa85cdd4b0769742fcf2b668fb37cb1a5b31b86d3fec9f48baf66c887a4102a
+generated: 2017-03-10T01:25:16.419560576-06:00

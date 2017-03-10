@@ -1,21 +1,29 @@
 # Default values for gitlab-ce-demo.
 # This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
-replicaCount: 1
-image:
-  repository: nginx
-  tag: stable
-  pullPolicy: IfNotPresent
-service:
-  name: nginx
-  type: ClusterIP
-  externalPort: 80
-  internalPort: 80
-resources:
-  limits:
-    cpu: 100m
-    memory: 128Mi
-  requests:
-    cpu: 100m
-    memory: 128Mi
 
+## The base domain that your users will use to reach the services.
+# baseDomain:
+baseScheme: https
+sharedRunnersToken: "gitlab"
+gke: true
+
+## Configuration values for the gitlab-ce dependency.
+gitlab-ce:
+  externalUrl: {{ .Values.baseScheme }}://gitlab.{{ .Values.baseDomain }}
+  registryExternalUrl: {{ .Values.baseScheme }}://registry.{{ .Values.baseDomain }}
+  mattermostExternalUrl: {{ .Values.baseScheme }}://mattermost.{{ .Values.baseDomain }}
+  prometheusExternalUrl: {{ .Values.baseScheme }}://prometheus.{{ .Values.baseDomain }}
+  sharedRunnersToken: {{ .Values.sharedRunnersToken }}
+  {{- if .Values.persistence.gitlabRegistry.enabled }}
+  persistence:
+    gitlabEtc:
+      storageClass: fast
+    gitlabData:
+      storageClass: fast
+    gitlabRegistry:
+      storageClass: fast
+  {{- end }}
+
+## Configuration values for the gitlab-runner dependency.
+gitlab-runner:
+  runnerRegistrationToken: {{ .Values.sharedRunnersToken }}
