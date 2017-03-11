@@ -11,8 +11,8 @@ lint:
   except:
     - master
 
-package:
-  stage: build
+pages:
+  stage: deploy
   script:
     - helm lint charts/*
     - mkdir -p public
