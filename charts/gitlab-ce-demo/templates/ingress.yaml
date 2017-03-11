@@ -11,10 +11,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - {{ .Values.gitlab-ce.externalUrl }}
-    - {{ .Values.gitlab-ce.registryExternalUrl }}
-    - {{ .Values.gitlab-ce.mattermostExternalUrl }}
-    - {{ .Values.gitlab-ce.prometheusExternalUrl }}
+    - {{ default "" .Values.gitlab-ce.externalUrl }}
+    - {{ default "" .Values.gitlab-ce.registryExternalUrl }}
+    - {{ default "" .Values.gitlab-ce.mattermostExternalUrl }}
+    - {{ default "" .Values.gitlab-ce.prometheusExternalUrl }}
     secretName: gitlab-tls
   rules:
   - host: {{ .Values.gitlab-ce.externalUrl }}
