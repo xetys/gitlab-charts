@@ -12,7 +12,8 @@ pages:
   stage: deploy
   script:
     - mkdir .public
-    - (cd .public; for dir in ../charts/*; do helm package ../charts/$dir; done)
+    - (cd .public; helm package ../charts/*)
+    - helm dep up charts/*
     - helm repo index .public --url https://charts.gitlab.io
     - mv .public public
   artifacts:
