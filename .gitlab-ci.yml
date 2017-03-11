@@ -1,7 +1,7 @@
 image: registry.gitlab.com/charts/alpine-helm
 
 before_script:
-  - helm init || echo Ignoring error
+  - helm init --client-only
 
 lint:
   stage: test
