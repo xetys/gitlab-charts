@@ -8,14 +8,13 @@ lint:
   script:
     - helm lint charts/*
 
-pages:
+package:
   stage: deploy
   script:
-    - mkdir .public
-    - (cd .public; helm package ../charts/*)
+    - mkdir -p public
     - helm dep up charts/*
-    - helm repo index .public --url https://charts.gitlab.io
-    - mv .public public
+    - (cd public; helm package ../charts/*)
+    - helm repo index public --url https://charts.gitlab.io
   artifacts:
     paths:
     - public
