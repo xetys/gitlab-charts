@@ -13,7 +13,6 @@ gitlab-ce:
   #mattermostExternalUrl: {{ .Values.baseScheme }}://mattermost.{{ .Values.baseDomain }}
   #prometheusExternalUrl: {{ .Values.baseScheme }}://prometheus.{{ .Values.baseDomain }}
   sharedRunnersToken: "gNW8934yfTPWvT2J+Lqew5g/ptoiyEbhbc9IIqHNTt4="
-  {{- if .Values.persistence.gitlabRegistry.enabled }}
   persistence:
     gitlabEtc:
       storageClass: fast
@@ -21,7 +20,6 @@ gitlab-ce:
       storageClass: fast
     gitlabRegistry:
       storageClass: fast
-  {{- end }}
 
 ## Configuration values for the gitlab-runner dependency.
 gitlab-runner:
