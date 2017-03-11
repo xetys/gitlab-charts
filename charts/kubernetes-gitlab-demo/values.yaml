@@ -32,3 +32,11 @@ gitlabRailsStorageSize: 30Gi
 gitlabRegistryStorageSize: 30Gi
 gitlabConfigStorageSize: 1Gi
 gitlabRunnerImage: gitlab/gitlab-runner:alpine-v1.11.1
+
+gitlab-runner:
+  checkInterval: 1
+  runners:
+    namespace: gitlab
+    gitlabUrl:
+    runnerRegistrationToken: NDl1ZjNtenMxcWR6NXZnbw==
+    privileged: true
