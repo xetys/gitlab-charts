@@ -35,6 +35,7 @@ gitlabRunnerImage: gitlab/gitlab-runner:alpine-v1.11.1
 gitlab-runner:
   checkInterval: 1
   # gitlabUrl: https://gitlab.example.com
+  # runnerRegistrationToken must equal initialSharedRunnersRegistrationToken
   runnerRegistrationToken: NDl1ZjNtenMxcWR6NXZnbw==
   namespace: gitlab
   resources:
