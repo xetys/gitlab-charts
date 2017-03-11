@@ -4,16 +4,15 @@
 ## The base domain that your users will use to reach the services.
 # baseDomain:
 baseScheme: https
-sharedRunnersToken: "gitlab"
 gke: true
 
 ## Configuration values for the gitlab-ce dependency.
 gitlab-ce:
-  externalUrl: {{ .Values.baseScheme }}://gitlab.{{ .Values.baseDomain }}
-  registryExternalUrl: {{ .Values.baseScheme }}://registry.{{ .Values.baseDomain }}
-  mattermostExternalUrl: {{ .Values.baseScheme }}://mattermost.{{ .Values.baseDomain }}
-  prometheusExternalUrl: {{ .Values.baseScheme }}://prometheus.{{ .Values.baseDomain }}
-  sharedRunnersToken: {{ .Values.sharedRunnersToken }}
+  #externalUrl: {{ .Values.baseScheme }}://gitlab.{{ .Values.baseDomain }}
+  #registryExternalUrl: {{ .Values.baseScheme }}://registry.{{ .Values.baseDomain }}
+  #mattermostExternalUrl: {{ .Values.baseScheme }}://mattermost.{{ .Values.baseDomain }}
+  #prometheusExternalUrl: {{ .Values.baseScheme }}://prometheus.{{ .Values.baseDomain }}
+  sharedRunnersToken: "gNW8934yfTPWvT2J+Lqew5g/ptoiyEbhbc9IIqHNTt4="
   {{- if .Values.persistence.gitlabRegistry.enabled }}
   persistence:
     gitlabEtc:
@@ -26,4 +25,4 @@ gitlab-ce:
 
 ## Configuration values for the gitlab-runner dependency.
 gitlab-runner:
-  runnerRegistrationToken: {{ .Values.sharedRunnersToken }}
+  runnerRegistrationToken: "gNW8934yfTPWvT2J+Lqew5g/ptoiyEbhbc9IIqHNTt4="
