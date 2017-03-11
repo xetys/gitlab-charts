@@ -3,8 +3,7 @@
 
 # Required variables
 # baseIP is an externally provisioned static IP address that you must provide
-# e.g. 10.10.1.1
-#baseIP:
+#baseIP: 1.1.1.1
 
 # baseDomain is the top-most part of the domain. Subdomains will be generated
 # for gitlab, mattermost, registry, and prometheus.
@@ -35,8 +34,16 @@ gitlabRunnerImage: gitlab/gitlab-runner:alpine-v1.11.1
 
 gitlab-runner:
   checkInterval: 1
+  # gitlabUrl: https://gitlab.example.com
+  runnerRegistrationToken: NDl1ZjNtenMxcWR6NXZnbw==
+  namespace: gitlab
+  resources:
+    limits:
+      memory: 500Mi
+      cpu: 600m
+    requests:
+      memory: 500Mi
+      cpu: 600m
   runners:
     namespace: gitlab
-    gitlabUrl:
-    runnerRegistrationToken: NDl1ZjNtenMxcWR6NXZnbw==
     privileged: true
