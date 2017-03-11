@@ -1,4 +1,15 @@
-   NOTE: It may take a few minutes for the LoadBalancer IP to be available.
-         You can watch the status of by running 'kubectl get svc -w nginx --namespace nginx-ingress'
-kubectl get svc nginx --namespace nginx-ingress -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
-echo Configure DNS: *.{{ .Values.baseDomain }}	A	300	$SERVICE_IP
+{{- if and(default "" .Values.baseDomain, default "" .Values.baseIP, default "" .Values.legoEmail) }}
+  It may take a few minutes for the LoadBalancer IP to be available.
+  You can watch the status of by running 'kubectl get svc -w nginx --namespace nginx-ingress'
+  Makes sure to configure DNS with something like: *.{{ .Values.baseDomain }}	A	300	{{ .Values.baseIP }}
+{{- else }}
+####################################################################################################
+## WARNING: You did not specify an baseDomain, baseIP, and legoEmail in your 'helm install' call. ##
+####################################################################################################
+
+This deployment will be incomplete until you provide all three variables:
+
+$ helm upgrade {{ .Release.Name }} \
+  --set baseIP=172.16.254.1,baseDomain=example.com,legoEmail=you@example.com \
+  gitlab/kubernetes-gitlab-demo
+{{- end -}}

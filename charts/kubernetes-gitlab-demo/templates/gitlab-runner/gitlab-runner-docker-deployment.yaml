@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: gitlab-runner-docker
-        image: gitlab/gitlab-runner:alpine-v1.9.2
+        image: {{ .Values.gitlabRunnerImage }}
         command: ["/bin/bash", "/scripts/entrypoint"]
         imagePullPolicy: IfNotPresent
         env:

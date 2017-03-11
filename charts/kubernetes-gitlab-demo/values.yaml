@@ -25,7 +25,10 @@ initialSharedRunnersRegistrationToken: NDl1ZjNtenMxcWR6NXZnbw==
 mattermostAppSecret: NDl1ZjNtenMxcWR6NXZnbw==
 mattermostAppUID: aadas
 redisStorageSize: 5Gi
+redisImage: redis:3.2.4
 postgresStorageSize: 30Gi
 postgresImage: postgres:9.5.3
 gitlabRailsStorageSize: 30Gi
 gitlabRegistryStorageSize: 30Gi
+gitlabConfigStorageSize: 1Gi
+gitlabRunnerImage: gitlab/gitlab-runner:alpine-v1.11.1
