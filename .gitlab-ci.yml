@@ -2,15 +2,19 @@ image: registry.gitlab.com/charts/alpine-helm
 
 before_script:
   - helm init --client-only
+  - helm repo add gitlab https://charts.gitlab.io
 
 lint:
   stage: test
   script:
     - helm lint charts/*
+  except:
+    - master
 
 package:
   stage: deploy
   script:
+    - helm lint charts/*
     - mkdir -p public
     - for chart in charts/*; do helm dep up $chart; done
     - (cd public; helm package ../charts/*)
