@@ -10,7 +10,7 @@ spec:
     - ReadWriteMany
   resources:
     requests:
-      storage: 30Gi
+      storage: {{ .Values.gitlabRailsStorageSize }}
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -24,4 +24,4 @@ spec:
     - ReadWriteMany
   resources:
     requests:
-      storage: 30Gi
+      storage: {{ .Values.gitlabRegistryStorageSize }}

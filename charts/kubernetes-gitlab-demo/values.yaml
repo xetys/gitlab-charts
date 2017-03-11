@@ -16,3 +16,16 @@
 # legoEmail is a valid email address used by Let's Encrypt. It does not have to
 # be at the baseDomain.
 #legoEmail: you@example.com
+
+# Optional variables
+gitlabNamespace: gitlab
+gitlabImage: gitlab/gitlab-ce:8.17.3-ce.0
+postgresPassword: NDl1ZjNtenMxcWR6NXZnbw==
+initialSharedRunnersRegistrationToken: NDl1ZjNtenMxcWR6NXZnbw==
+mattermostAppSecret: NDl1ZjNtenMxcWR6NXZnbw==
+mattermostAppUID: aadas
+redisStorageSize: 5Gi
+postgresStorageSize: 30Gi
+postgresImage: postgres:9.5.3
+gitlabRailsStorageSize: 30Gi
+gitlabRegistryStorageSize: 30Gi
