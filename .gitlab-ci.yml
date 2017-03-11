@@ -12,7 +12,7 @@ package:
   stage: deploy
   script:
     - mkdir -p public
-    - helm dep up charts/*
+    - foreach chart in charts/*; do helm dep up $chart; done
     - (cd public; helm package ../charts/*)
     - helm repo index public --url https://charts.gitlab.io
   artifacts:
