@@ -1,0 +1,18 @@
+# Default values for kubernetes-gitlab-demo.
+# This is a YAML-formatted file.
+
+# Required variables
+# baseIP is an externally provisioned static IP address that you must provide
+# e.g. 10.10.1.1
+#baseIP:
+
+# baseDomain is the top-most part of the domain. Subdomains will be generated
+# for gitlab, mattermost, registry, and prometheus.
+# Recommended to set up an A record on the DNS to *.your-domain.com to point to
+# the baseIP
+# e.g. *.your-domain.com.	A	300	baseIP
+#baseDomain: your-domain.com
+
+# legoEmail is a valid email address used by Let's Encrypt. It does not have to
+# be at the baseDomain.
+#legoEmail: you@example.com
