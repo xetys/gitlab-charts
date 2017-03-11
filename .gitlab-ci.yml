@@ -12,7 +12,7 @@ lint:
     - master
 
 package:
-  stage: deploy
+  stage: build
   script:
     - helm lint charts/*
     - mkdir -p public
