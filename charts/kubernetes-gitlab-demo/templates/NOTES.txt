@@ -1,4 +1,4 @@
    NOTE: It may take a few minutes for the LoadBalancer IP to be available.
-         You can watch the status of by running 'kubectl get svc -w --namespace {{ .Release.Namespace }} {{ template "fullname" . }}'
+         You can watch the status of by running 'kubectl get svc -w nginx --namespace nginx-ingress'
 export SERVICE_IP=$(kubectl get svc nginx --namespace nginx-ingress -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
-echo Configure DNS: *.i2p.online.	A	300	$SERVICE_IP
+echo Configure DNS: *.{{ .Values.baseDomain }}	A	300	$SERVICE_IP
