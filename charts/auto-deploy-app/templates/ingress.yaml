@@ -4,8 +4,8 @@ metadata:
   name: {{ .Values.ciEnvironmentSlug }}
   labels:
     app: {{ .Values.ciEnvironmentSlug }}
-    pipeline_id: {{ .Values.ciPipelineID | quote }}
-    build_id: {{ .Values.ciBuildID | quote }}
+    pipeline_id: {{ .Values.ciPipelineID }}
+    build_id: {{ .Values.ciBuildID }}
   annotations:
     kubernetes.io/tls-acme: "true"
     kubernetes.io/ingress.class: "nginx"

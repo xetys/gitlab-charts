@@ -4,8 +4,8 @@ metadata:
   name: {{ .Values.ciEnvironmentSlug }}
   labels:
     app: {{ .Values.ciEnvironmentSlug }}
-    pipeline_id: {{ .Values.ciPipelineID | quote }}
-    build_id: {{ .Values.ciBuildID | quote }}
+    pipeline_id: {{ .Values.ciPipelineID }}
+    build_id: {{ .Values.ciBuildID }}
     chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
 spec:
   replicas: {{ .Values.replicaCount }}
@@ -21,9 +21,9 @@ spec:
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         env:
         - name: CI_PIPELINE_ID
-          value: {{ .Values.ciPipelineID | quote }}
+          value: {{ .Values.ciPipelineID }}
         - name: CI_BUILD_ID
-          value: {{ .Values.ciBuildID | quote }}
+          value: {{ .Values.ciBuildID }}
         ports:
         - name: web
           containerPort: {{ .Values.service.internalPort }}
