@@ -2,7 +2,6 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: {{ .Values.ciEnvironmentSlug }}
-  namespace: {{ .Values.kubeNamespace }}
   labels:
     app: {{ .Values.ciEnvironmentSlug }}
     pipeline_id: {{ .Values.ciPipelineID | quote }}
