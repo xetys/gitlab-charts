@@ -4,7 +4,7 @@ metadata:
   name: {{ .Values.ciEnvironmentSlug }}
   namespace: {{ .Values.kubeNamespace }}
   labels:
-    app: { .Values.ciEnvironmentSlug }}
+    app: {{ .Values.ciEnvironmentSlug }}
     pipeline_id: {{ .Values.ciPipelineID | quote }}
     build_id: {{ .Values.ciBuildID | quote }}
   annotations:
