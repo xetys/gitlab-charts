@@ -78,6 +78,13 @@ spec:
             secretKeyRef:
               name: gitlab-secrets
               key: mattermost_app_secret
+        {{- if .Values.gitlabEELicense }}
+        - name: GITLAB_EE_LICENSE
+          valueFrom:
+            secretKeyRef:
+              name: gitlab-secrets
+              key: gitlab_ee_license
+        {{- end }}
         - name: GITLAB_OMNIBUS_CONFIG
           value: |
             external_url "#{ENV['GITLAB_EXTERNAL_SCHEME']}://#{ENV['GITLAB_EXTERNAL_HOSTNAME']}"
@@ -139,8 +146,13 @@ spec:
             }
 
         - name: GITLAB_POST_RECONFIGURE_SCRIPT
+          {{- if .Values.gitlabEELicense }}
+          value: |
+            /opt/gitlab/bin/gitlab-rails runner -e production 'Doorkeeper::Application.where(uid: ENV["MATTERMOST_APP_UID"], secret: ENV["MATTERMOST_APP_SECRET"], redirect_uri: "#{ENV["GITLAB_MATTERMOST_EXTERNAL_SCHEME"]}://#{ENV["GITLAB_MATTERMOST_EXTERNAL_HOSTNAME"]}/signup/gitlab/complete\r\n#{ENV["GITLAB_MATTERMOST_EXTERNAL_SCHEME"]}://#{ENV["GITLAB_MATTERMOST_EXTERNAL_HOSTNAME"]}/login/gitlab/complete", name: "GitLab Mattermost").first_or_create;' && /opt/gitlab/bin/gitlab-rails runner -e production 'PrometheusService.where(template: true).first_or_create.update(active: true, properties: {"api_url"=>"http://localhost:9090"})' && /opt/gitlab/bin/gitlab-rails runner -e production 'License.create(data: "#{ENV["GITLAB_EE_LICENSE"]}")'
+          {{- else }}
           value: |
             /opt/gitlab/bin/gitlab-rails runner -e production 'Doorkeeper::Application.where(uid: ENV["MATTERMOST_APP_UID"], secret: ENV["MATTERMOST_APP_SECRET"], redirect_uri: "#{ENV["GITLAB_MATTERMOST_EXTERNAL_SCHEME"]}://#{ENV["GITLAB_MATTERMOST_EXTERNAL_HOSTNAME"]}/signup/gitlab/complete\r\n#{ENV["GITLAB_MATTERMOST_EXTERNAL_SCHEME"]}://#{ENV["GITLAB_MATTERMOST_EXTERNAL_HOSTNAME"]}/login/gitlab/complete", name: "GitLab Mattermost").first_or_create;' && /opt/gitlab/bin/gitlab-rails runner -e production 'PrometheusService.where(template: true).first_or_create.update(active: true, properties: {"api_url"=>"http://localhost:9090"})'
+          {{- end }}
         ports:
         - name: registry
           containerPort: 8105
@@ -169,7 +181,7 @@ spec:
           timeoutSeconds: 15
         readinessProbe:
           httpGet:
-            path: /help
+            path: /
             port: 8005
           initialDelaySeconds: 15
           timeoutSeconds: 1

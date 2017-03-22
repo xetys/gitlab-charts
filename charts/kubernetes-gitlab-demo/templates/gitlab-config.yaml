@@ -23,3 +23,6 @@ data:
   postgres_password: {{ .Values.postgresPassword }}
   initial_shared_runners_registration_token: {{ default "" .Values.initialSharedRunnersRegistrationToken | b64enc | quote }}
   mattermost_app_secret: {{ .Values.mattermostAppSecret }}
+{{- if .Values.gitlabEELicense }}
+  gitlab_ee_license: {{ .Values.gitlabEELicense | b64enc | quote }}
+{{- end }}
