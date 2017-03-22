@@ -1,6 +1,6 @@
 {{- if and (default "" .Values.baseDomain) (default "" .Values.baseIP) (default "" .Values.legoEmail) }}
-  It may take a few minutes for the LoadBalancer IP to be available.
-  You can watch the status of by running 'kubectl get svc -w nginx --namespace nginx-ingress'
+  It may take several minutes GitLab to reconfigure.
+  You can watch the status by running 'kubectl get deployment -w gitlab --namespace gitlab'
   Makes sure to configure DNS with something like:
     *.{{ .Values.baseDomain }}	300 IN A {{ .Values.baseIP }}
 {{- else }}
