@@ -129,22 +129,18 @@ spec:
             gitlab_rails['registry_path'] = '/gitlab-registry'
             gitlab_rails['trusted_proxies'] = ["10.0.0.0/8","172.16.0.0/12","192.168.0.0/16"]
 
-            prometheus['enable'] = true
             prometheus['listen_address'] = '0.0.0.0:9090'
-            node_exporter['enable'] = true
-            gitlab_monitor['enable'] = true
-            postgres_exporter['enable'] = true
+            prometheus['monitor_kubernetes'] = true
             postgres_exporter['env'] = {
               'DATA_SOURCE_NAME' => "user=#{ENV['POSTGRES_USER']} host=gitlab-postgresql port=5432 dbname=#{ENV['POSTGRES_DB']} password=#{ENV['POSTGRES_PASSWORD']} sslmode=disable"
             }
-            redis_exporter['enable'] = true
             redis_exporter['flags'] = {
               'redis.addr' => "gitlab-redis:6379",
             }
 
         - name: GITLAB_POST_RECONFIGURE_SCRIPT
           value: |
-            /opt/gitlab/bin/gitlab-rails runner -e production 'Doorkeeper::Application.where(uid: ENV["MATTERMOST_APP_UID"], secret: ENV["MATTERMOST_APP_SECRET"], redirect_uri: "#{ENV["GITLAB_MATTERMOST_EXTERNAL_SCHEME"]}://#{ENV["GITLAB_MATTERMOST_EXTERNAL_HOSTNAME"]}/signup/gitlab/complete\r\n#{ENV["GITLAB_MATTERMOST_EXTERNAL_SCHEME"]}://#{ENV["GITLAB_MATTERMOST_EXTERNAL_HOSTNAME"]}/login/gitlab/complete", name: "GitLab Mattermost").first_or_create;'
+            /opt/gitlab/bin/gitlab-rails runner -e production 'Doorkeeper::Application.where(uid: ENV["MATTERMOST_APP_UID"], secret: ENV["MATTERMOST_APP_SECRET"], redirect_uri: "#{ENV["GITLAB_MATTERMOST_EXTERNAL_SCHEME"]}://#{ENV["GITLAB_MATTERMOST_EXTERNAL_HOSTNAME"]}/signup/gitlab/complete\r\n#{ENV["GITLAB_MATTERMOST_EXTERNAL_SCHEME"]}://#{ENV["GITLAB_MATTERMOST_EXTERNAL_HOSTNAME"]}/login/gitlab/complete", name: "GitLab Mattermost").first_or_create;' && /opt/gitlab/bin/gitlab-rails runner -e production 'PrometheusService.where(template: true).first_or_create.update(active: true, properties: {"api_url"=>"http://localhost:9090"})'
         ports:
         - name: registry
           containerPort: 8105
