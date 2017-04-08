@@ -3,8 +3,10 @@ kind: PersistentVolumeClaim
 metadata:
   name: gitlab-postgresql-storage
   namespace: gitlab
+  {{- if .Values.fastStorageEnabled }}
   annotations:
     volume.beta.kubernetes.io/storage-class: fast
+  {{- end }}
 spec:
   accessModes:
     - ReadWriteOnce
