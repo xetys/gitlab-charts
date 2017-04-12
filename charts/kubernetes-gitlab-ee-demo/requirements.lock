@@ -1,9 +1,0 @@
-dependencies:
-- condition: ""
-  enabled: false
-  name: kubernetes-gitlab-demo
-  repository: https://charts.gitlab.io/
-  tags: null
-  version: 0.1.9
-digest: sha256:340daadd791770b7daad718e9ef864c4c9c379bfdf0a29459a13eac5d2900c08
-generated: 2017-04-10T11:47:34.769838299-05:00

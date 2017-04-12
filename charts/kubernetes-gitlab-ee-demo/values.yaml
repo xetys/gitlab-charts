@@ -1,5 +1,0 @@
-# Default values for kubernetes-gitlab-ee-demo.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
-kubernetes-gitlab-demo:
-  gitlabImage: gitlab/gitlab-ee:9.0.5-ee.0

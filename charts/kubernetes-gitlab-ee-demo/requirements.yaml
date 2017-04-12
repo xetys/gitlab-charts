@@ -1,4 +1,0 @@
-dependencies:
-- name: kubernetes-gitlab-demo
-  version: 0.1.10
-  repository: https://charts.gitlab.io/
