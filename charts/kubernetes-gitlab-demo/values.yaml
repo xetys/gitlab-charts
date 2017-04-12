@@ -27,6 +27,7 @@ redisImage: redis:3.2.4
 redisDedicatedStorage: true
 redisStorageSize: 5Gi
 postgresImage: postgres:9.6.1
+# If you disable postgresDedicatedStorage, you probably need to bump up gitlabRailsStorageSize 
 postgresDedicatedStorage: true
 postgresStorageSize: 30Gi
 gitlabRailsStorageSize: 30Gi
