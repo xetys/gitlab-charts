@@ -37,4 +37,4 @@ spec:
       volumes:
       - name: data
         persistentVolumeClaim:
-          claimName: gitlab-redis-storage
+          claimName: {{ if .Values.redisDedicatedStorage }} gitlab-redis-storage {{ else }} gitlab-rails-storage {{ end }}

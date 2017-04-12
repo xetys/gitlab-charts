@@ -66,7 +66,7 @@ spec:
       volumes:
       - name: data
         persistentVolumeClaim:
-          claimName: gitlab-postgresql-storage
+          claimName: {{ if .Values.postgresDedicatedStorage }} gitlab-postgresql-storage {{ else }} gitlab-rails-storage {{ end }}
       - name: initdb
         configMap:
           name: gitlab-postgresql-initdb

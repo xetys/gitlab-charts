@@ -23,10 +23,12 @@ postgresPassword: NDl1ZjNtenMxcWR6NXZnbw==
 initialSharedRunnersRegistrationToken: "tQtCbx5UZy_ByS7FyzUH"
 mattermostAppSecret: NDl1ZjNtenMxcWR6NXZnbw==
 mattermostAppUID: aadas
-redisStorageSize: 5Gi
 redisImage: redis:3.2.4
-postgresStorageSize: 30Gi
+redisDedicatedStorage: true
+redisStorageSize: 5Gi
 postgresImage: postgres:9.6.1
+postgresDedicatedStorage: true
+postgresStorageSize: 30Gi
 gitlabRailsStorageSize: 30Gi
 gitlabRegistryStorageSize: 30Gi
 gitlabConfigStorageSize: 1Gi
