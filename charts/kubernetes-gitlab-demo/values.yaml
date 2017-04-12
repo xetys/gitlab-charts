@@ -32,6 +32,7 @@ gitlabRegistryStorageSize: 30Gi
 gitlabConfigStorageSize: 1Gi
 gitlabRunnerImage: gitlab/gitlab-runner:alpine-v9.0.2
 provider: gke
+storageLocation: northcentralus
 # Optional, for GitLab EE images only
 #gitlabEELicense: base64-encoded-license
 
