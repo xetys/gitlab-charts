@@ -16,6 +16,6 @@ parameters:
 provisioner: kubernetes.io/azure-disk
 parameters:
   skuName: Standard_LRS
-  location: {{ .Values.storageLocation }}
+  location: {{ .Values.acsStorageLocation }}
 {{- end }}
 {{- end }}
