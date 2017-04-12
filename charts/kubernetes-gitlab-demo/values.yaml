@@ -18,7 +18,10 @@
 
 # Optional variables
 gitlabNamespace: gitlab
-gitlabImage: gitlab/gitlab-ce:9.0.5-ce.0
+# `ce` or `ee`
+gitLab: ce
+gitlabCEImage: gitlab/gitlab-ce:9.0.5-ce.0
+gitlabEEImage: gitlab/gitlab-ee:9.0.5-ee.0
 postgresPassword: NDl1ZjNtenMxcWR6NXZnbw==
 initialSharedRunnersRegistrationToken: "tQtCbx5UZy_ByS7FyzUH"
 mattermostAppSecret: NDl1ZjNtenMxcWR6NXZnbw==
@@ -27,7 +30,7 @@ redisImage: redis:3.2.4
 redisDedicatedStorage: true
 redisStorageSize: 5Gi
 postgresImage: postgres:9.6.1
-# If you disable postgresDedicatedStorage, you probably need to bump up gitlabRailsStorageSize 
+# If you disable postgresDedicatedStorage, you should consider bumping up gitlabRailsStorageSize
 postgresDedicatedStorage: true
 postgresStorageSize: 30Gi
 gitlabRailsStorageSize: 30Gi
