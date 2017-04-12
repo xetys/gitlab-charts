@@ -3,7 +3,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: gitlab-rails-storage
   namespace: gitlab
-  {{- if .Values.fastStorageEnabled }}
+  {{- if eq .Values.provider "gke" }}
   annotations:
     volume.beta.kubernetes.io/storage-class: fast
   {{- end }}
@@ -19,7 +19,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: gitlab-registry-storage
   namespace: gitlab
-  {{- if .Values.fastStorageEnabled }}
+  {{- if eq .Values.provider "gke" }}
   annotations:
     volume.beta.kubernetes.io/storage-class: fast
   {{- end }}

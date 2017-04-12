@@ -32,11 +32,13 @@ spec:
               key: postgres_db
         - name: DB_EXTENSION
           value: pg_trgm
+        - name: PGDATA
+          value: /var/lib/postgresql/data/pgdata
         ports:
         - name: postgres
           containerPort: 5432
         volumeMounts:
-        - mountPath: /var/lib/postgresql
+        - mountPath: /var/lib/postgresql/data
           name: data
         - mountPath: /docker-entrypoint-initdb.d
           name: initdb

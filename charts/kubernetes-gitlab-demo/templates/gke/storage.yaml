@@ -1,4 +1,4 @@
-{{- if .Values.fastStorageEnabled }}
+{{- if eq .Values.provider "gke" }}
 kind: StorageClass
 apiVersion: storage.k8s.io/v1beta1
 metadata:

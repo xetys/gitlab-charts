@@ -144,15 +144,28 @@ spec:
             redis_exporter['flags'] = {
               'redis.addr' => "gitlab-redis:6379",
             }
+        - name: GITLAB_POST_RECONFIGURE_CODE
+          value: |
+            Doorkeeper::Application.where(uid: ENV["MATTERMOST_APP_UID"]).first_or_create(
+              name: "GitLab Mattermost",
+              secret: ENV["MATTERMOST_APP_SECRET"],
+              redirect_uri: "#{ENV["GITLAB_MATTERMOST_EXTERNAL_SCHEME"]}://#{ENV["GITLAB_MATTERMOST_EXTERNAL_HOSTNAME"]}/signup/gitlab/complete\r\n#{ENV["GITLAB_MATTERMOST_EXTERNAL_SCHEME"]}://#{ENV["GITLAB_MATTERMOST_EXTERNAL_HOSTNAME"]}/login/gitlab/complete")
 
+            PrometheusService.where(template: true).first_or_create(
+              active: true, api_url: "http://localhost:9090")
+
+            KubernetesService.where(template: true).first_or_create(
+              active: true,
+              api_url: "https://#{ENV["KUBERNETES_SERVICE_HOST"]}:#{ENV["KUBERNETES_SERVICE_PORT"]}",
+              token: File.read("/var/run/secrets/kubernetes.io/serviceaccount/token"),
+              ca_pem: File.read("/var/run/secrets/kubernetes.io/serviceaccount/ca.crt"))
+
+            {{- if .Values.gitlabEELicense }}
+            License.first_or_create(data: "#{ENV["GITLAB_EE_LICENSE"]}")'
+            {{- end }}
         - name: GITLAB_POST_RECONFIGURE_SCRIPT
-          {{- if .Values.gitlabEELicense }}
           value: |
-            /opt/gitlab/bin/gitlab-rails runner -e production 'Doorkeeper::Application.where(uid: ENV["MATTERMOST_APP_UID"], secret: ENV["MATTERMOST_APP_SECRET"], redirect_uri: "#{ENV["GITLAB_MATTERMOST_EXTERNAL_SCHEME"]}://#{ENV["GITLAB_MATTERMOST_EXTERNAL_HOSTNAME"]}/signup/gitlab/complete\r\n#{ENV["GITLAB_MATTERMOST_EXTERNAL_SCHEME"]}://#{ENV["GITLAB_MATTERMOST_EXTERNAL_HOSTNAME"]}/login/gitlab/complete", name: "GitLab Mattermost").first_or_create && PrometheusService.where(template: true).first_or_create(active: true, properties: {"api_url"=>"http://localhost:9090"}) && License.first_or_create(data: "#{ENV["GITLAB_EE_LICENSE"]}")'
-          {{- else }}
-          value: |
-            /opt/gitlab/bin/gitlab-rails runner -e production 'Doorkeeper::Application.where(uid: ENV["MATTERMOST_APP_UID"], secret: ENV["MATTERMOST_APP_SECRET"], redirect_uri: "#{ENV["GITLAB_MATTERMOST_EXTERNAL_SCHEME"]}://#{ENV["GITLAB_MATTERMOST_EXTERNAL_HOSTNAME"]}/signup/gitlab/complete\r\n#{ENV["GITLAB_MATTERMOST_EXTERNAL_SCHEME"]}://#{ENV["GITLAB_MATTERMOST_EXTERNAL_HOSTNAME"]}/login/gitlab/complete", name: "GitLab Mattermost").first_or_create && PrometheusService.where(template: true).first_or_create(active: true, properties: {"api_url"=>"http://localhost:9090"})'
-          {{- end }}
+            /opt/gitlab/bin/gitlab-rails runner -e production "$GITLAB_POST_RECONFIGURE_CODE"
         ports:
         - name: registry
           containerPort: 8105

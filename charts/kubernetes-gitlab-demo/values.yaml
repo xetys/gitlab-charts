@@ -31,7 +31,7 @@ gitlabRailsStorageSize: 30Gi
 gitlabRegistryStorageSize: 30Gi
 gitlabConfigStorageSize: 1Gi
 gitlabRunnerImage: gitlab/gitlab-runner:alpine-v9.0.2
-fastStorageEnabled: true
+provider: gke
 # Optional, for GitLab EE images only
 #gitlabEELicense: base64-encoded-license
 

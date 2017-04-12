@@ -3,7 +3,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: gitlab-redis-storage
   namespace: gitlab
-  {{- if .Values.fastStorageEnabled }}
+  {{- if eq .Values.provider "gke" }}
   annotations:
     volume.beta.kubernetes.io/storage-class: fast
   {{- end }}
