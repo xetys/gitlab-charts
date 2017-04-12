@@ -6,7 +6,7 @@ This work is based partially on: https://github.com/lwolf/kubernetes-gitlab/. Gi
 
 ## Introduction
 
-This chart is provided for the deployment and testing of [GitLab](https://about.gitlab.com) on [Kubernetes](https://kubernetes.io/) via [Google Container Engine](https://cloud.google.com/container-engine/). This provides functionality used in the [GitLab Idea to Production demo on GKE presentation](https://about.gitlab.com/handbook/sales/demo/) from the [GitLab handbook](https://about.gitlab.com/handbook). Please use that script when providing this demo to customers, instead of these instructions directly.
+This chart is provided for the deployment and testing of [GitLab](https://about.gitlab.com) on [Kubernetes](https://kubernetes.io/) via [Google Container Engine](https://cloud.google.com/container-engine/) or [Azure Container Service](https://azure.microsoft.com/en-us/services/container-service/). This provides functionality used in the [GitLab Idea to Production demo on GKE presentation](https://about.gitlab.com/handbook/sales/demo/) from the [GitLab handbook](https://about.gitlab.com/handbook). Please use that script when providing this demo to customers, instead of these instructions directly.
 
 This includes:
 
@@ -19,13 +19,14 @@ Terms:
 
 -  Google Cloud Platform (**GCP**)
 -  Google Container Engine (**GKE**)
+-  Azure Container Service (**ACS**)
 -  Kubernetes (**k8s**)
 
 ## Prerequisites
 
--  [Google Cloud Platform](https://cloud.google.com/) account. This can be a trial, or paid account. The trial has lower limitations, so extensive
+-  [Google Cloud Platform](https://cloud.google.com/) or [Azure](https://portal.azure.com) account. This can be a trial, or paid account. The trial has lower limitations, so extensive
 testing with GitLab's Review Apps feature may exceed those limitations.
--  [Google Cloud SDK](https://cloud.google.com/sdk/) for using `gcloud` commands. This SDK also includes the necessary `kubectl` utilities.
+-  [Google Cloud SDK](https://cloud.google.com/sdk/) for using `gcloud` commands or [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli) for using `az` commands. These SDKs also includes the necessary `kubectl` utilities.
 -  Access to a `bash` shell. It is recommended at this time to use a GNU/Linux-based or OSX operating system.
 -  Access to the internet via HTTPS traffic.
 
