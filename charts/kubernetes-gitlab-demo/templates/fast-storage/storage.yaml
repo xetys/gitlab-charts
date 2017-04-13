@@ -1,6 +1,6 @@
 {{- if or (eq .Values.provider "gke") (eq .Values.provider "acs") }}
 kind: StorageClass
-apiVersion: storage.k8s.io/v1beta1
+apiVersion: {{ if eq .Values.provider "gke" }} storage.k8s.io/v1 {{ else }} storage.k8s.io/v1beta1 {{ end }}
 metadata:
   name: fast
   namespace: gitlab
