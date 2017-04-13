@@ -165,7 +165,7 @@ spec:
               ca_pem: File.read("/var/run/secrets/kubernetes.io/serviceaccount/ca.crt"))
 
             {{- if .Values.gitlabEELicense }}
-            License.first_or_create(data: "#{ENV["GITLAB_EE_LICENSE"]}")'
+            License.first_or_create(data: "#{ENV["GITLAB_EE_LICENSE"]}")
             {{- end }}
         - name: GITLAB_POST_RECONFIGURE_SCRIPT
           value: |
