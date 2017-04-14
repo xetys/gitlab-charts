@@ -150,6 +150,8 @@ spec:
             }
         - name: GITLAB_POST_RECONFIGURE_CODE
           value: |
+            include Gitlab::CurrentSettings
+
             Doorkeeper::Application.where(uid: ENV["MATTERMOST_APP_UID"]).first_or_create(
               name: "GitLab Mattermost",
               secret: ENV["MATTERMOST_APP_SECRET"],
@@ -163,6 +165,8 @@ spec:
               api_url: "https://#{ENV["KUBERNETES_SERVICE_HOST"]}:#{ENV["KUBERNETES_SERVICE_PORT"]}",
               token: File.read("/var/run/secrets/kubernetes.io/serviceaccount/token"),
               ca_pem: File.read("/var/run/secrets/kubernetes.io/serviceaccount/ca.crt"))
+
+            current_application_settings.update_attribute(:health_check_access_token, '{{.Values.healthCheckToken}}')
 
             {{- if .Values.gitlabEELicense }}
             License.first_or_create(data: "#{ENV["GITLAB_EE_LICENSE"]}")
@@ -193,7 +197,7 @@ spec:
           mountPath: /gitlab-registry
         livenessProbe:
           httpGet:
-            path: /help
+            path: /health_check?token={{.Values.healthCheckToken}}
             port: 8005
           initialDelaySeconds: 180
           timeoutSeconds: 15

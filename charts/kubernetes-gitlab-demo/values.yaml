@@ -41,6 +41,7 @@ gitlabRunnerImage: gitlab/gitlab-runner:alpine-v9.0.2
 provider: gke
 # acsStorageLocation is only used when provider=acs
 acsStorageLocation: northcentralus
+healthCheckToken: 'SXBAQichEJasbtDSygrD'
 # Optional, for GitLab EE images only
 #gitlabEELicense: base64-encoded-license
 
