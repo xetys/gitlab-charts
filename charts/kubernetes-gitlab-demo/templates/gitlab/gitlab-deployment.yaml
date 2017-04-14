@@ -203,7 +203,7 @@ spec:
           timeoutSeconds: 15
         readinessProbe:
           httpGet:
-            path: /
+            path: /health_check?token={{.Values.healthCheckToken}}
             port: 8005
           initialDelaySeconds: 15
           timeoutSeconds: 1
