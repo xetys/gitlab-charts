@@ -1,7 +1,7 @@
 # kubernetes-gitlab-demo
 This work is based partially on: https://github.com/lwolf/kubernetes-gitlab/. GitLab would like to thank Sergey Nuzhdin for his work.
 
-[GitLab Community Edition](https://about.gitlab.com/) is an application to code, test, and deploy code together. It provides Git repository management with fine grained access controls, code reviews, issue tracking, activity feeds, wikis, and continuous integration.
+[GitLab](https://about.gitlab.com/) is an application to code, test, and deploy code together. It provides Git repository management with fine grained access controls, code reviews, issue tracking, activity feeds, wikis, and continuous integration.
 
 
 ## Introduction
@@ -42,7 +42,7 @@ To install the chart with the release name `my-release` run:
 ```bash
 $ helm repo add gitlab https://charts.gitlab.io
 $ helm install --name my-release \
-    --set baseIP=172.16.254.1,baseDomain=example.com,legoEmail=you@example.com \
+    --set baseDomain=example.com,legoEmail=you@example.com \
     gitlab/kubernetes-gitlab-demo
 ```
 
@@ -69,7 +69,8 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 ```bash
 $ helm install --name my-release \
     --set baseIP=172.16.254.1,baseDomain=example.com,legoEmail=you@example.com, \
-    --set postgresPassword=foobar
+    --set postgresPassword=foobar \
+    --set gitlab=ee,gitlabEELicense=$LICENSE \
     gitlab/kubernetes-gitlab-demo
 ```
 
