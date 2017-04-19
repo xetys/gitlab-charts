@@ -39,8 +39,6 @@ gitlabConfigStorageSize: 1Gi
 gitlabRunnerImage: gitlab/gitlab-runner:alpine-v9.0.2
 # Valid values for provider are `gke` and `acs` for Google Container Engine and Azure Container Service respetively. Leaving it blank will disable fast disk options.
 provider: gke
-# acsStorageLocation is only used when provider=acs
-acsStorageLocation: northcentralus
 healthCheckToken: 'SXBAQichEJasbtDSygrD'
 # Optional, for GitLab EE images only
 #gitlabEELicense: base64-encoded-license
