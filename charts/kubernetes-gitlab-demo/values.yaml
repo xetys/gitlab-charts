@@ -37,7 +37,7 @@ gitlabRailsStorageSize: 30Gi
 gitlabRegistryStorageSize: 30Gi
 gitlabConfigStorageSize: 1Gi
 gitlabRunnerImage: gitlab/gitlab-runner:alpine-v9.0.2
-# Valid values for provider are `gke` and `acs` for Google Container Engine and Azure Container Service respetively. Leaving it blank will disable fast disk options.
+# Valid values for provider are `gke` for Google Container Engine. Leaving it blank (or any othervalue) will disable fast disk options.
 provider: gke
 healthCheckToken: 'SXBAQichEJasbtDSygrD'
 # Optional, for GitLab EE images only
