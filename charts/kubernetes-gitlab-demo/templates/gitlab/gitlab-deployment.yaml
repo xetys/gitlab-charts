@@ -141,10 +141,11 @@ spec:
             gitlab_rails['trusted_proxies'] = ["10.0.0.0/8","172.16.0.0/12","192.168.0.0/16"]
 
             prometheus['listen_address'] = '0.0.0.0:9090'
-            prometheus['monitor_kubernetes'] = true
+            postgres_exporter['enable'] = true
             postgres_exporter['env'] = {
               'DATA_SOURCE_NAME' => "user=#{ENV['POSTGRES_USER']} host=gitlab-postgresql port=5432 dbname=#{ENV['POSTGRES_DB']} password=#{ENV['POSTGRES_PASSWORD']} sslmode=disable"
             }
+            redis_exporter['enable'] = true
             redis_exporter['flags'] = {
               'redis.addr' => "gitlab-redis:6379",
             }
@@ -185,8 +186,6 @@ spec:
           containerPort: 22
         - name: prometheus
           containerPort: 9090
-        - name: node-exporter
-          containerPort: 9100
         volumeMounts:
         - name: config
           mountPath: /etc/gitlab

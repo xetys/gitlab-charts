@@ -24,6 +24,3 @@ spec:
     - name: prometheus
       port: 9090
       targetPort: prometheus
-    - name: node-exporter
-      port: 9100
-      targetPort: node-exporter
