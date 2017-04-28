@@ -148,12 +148,4 @@ redis:
 
 omnibusConfigRuby: |
   unicorn['worker_processes'] = 2;
-  manage_accounts['enable'] = true;
-  manage_storage_directories['manage_etc'] = false;
-  gitlab_shell['auth_file'] = '/gitlab-data/ssh/authorized_keys';
-  git_data_dir '/gitlab-data/git-data';
-  gitlab_rails['shared_path'] = '/gitlab-data/shared';
-  gitlab_rails['uploads_directory'] = '/gitlab-data/uploads';
-  gitlab_rails['registry_path'] = 'gitlab-registry';
-  gitlab_ci['builds_directory'] = '/gitlab-data/builds';
   gitlab_rails['trusted_proxies'] = ["10.0.0.0/8","172.16.0.0/12","192.168.0.0/16"];

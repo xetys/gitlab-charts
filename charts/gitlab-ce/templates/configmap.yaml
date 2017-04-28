@@ -27,6 +27,14 @@ data:
     redis['enable'] = false;
     gitlab_rails['redis_host'] = ENV['REDIS_HOST'];
     gitlab_rails['redis_password'] = ENV['REDIS_PASSWORD'];
+    manage_accounts['enable'] = true;
+    manage_storage_directories['manage_etc'] = false;
+    gitlab_shell['auth_file'] = '/gitlab-data/ssh/authorized_keys';
+    git_data_dir '/gitlab-data/git-data';
+    gitlab_rails['shared_path'] = '/gitlab-data/shared';
+    gitlab_rails['uploads_directory'] = '/gitlab-data/uploads';
+    gitlab_ci['builds_directory'] = '/gitlab-data/builds';
+    gitlab_rails['registry_path'] = '/gitlab-registry';
     prometheus['enable'] = true
     prometheus['listen_address'] = '0.0.0.0:9090'
     node_exporter['enable'] = true
