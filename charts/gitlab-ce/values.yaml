@@ -40,6 +40,22 @@ nodeExporterPort: 9100
 ## Configuration values for mattermost
 mattermostAppSecret: "gitlab"
 
+## Configure access to an external database
+## For these settings to be used you need to disable
+## the included postgresql database below
+## ref: https://docs.gitlab.com/omnibus/settings/database.html#using-a-non-packaged-postgresql-database-management-server
+# dbHost:
+# dbPassword:
+# dbUsername:
+# dbDatabase:
+
+## Configure access to an external redis server
+## For these settings to be used you need to disable
+## the included redis database below
+## ref: https://docs.gitlab.com/omnibus/settings/redis.html#using-a-non-packaged-redis-instance
+# redisHost:
+# redisPassword:
+
 ## Configure resource requests and limits
 ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
 ##
@@ -93,6 +109,9 @@ persistence:
 ## ref: https://github.com/kubernetes/charts/blob/master/stable/postgresql/README.md
 ##
 postgresql:
+  # Sets whether the postgresql helm chart is used as a dependency
+  enabled: true
+
   # 9.6 is the newest supported version for the GitLab container
   imageTag: "9.6"
   cpu: 1000m
@@ -109,6 +128,9 @@ postgresql:
 ## ref: https://github.com/kubernetes/charts/blob/master/stable/redis/README.md
 ##
 redis:
+  # Sets whether the redis helm chart is used as a dependency
+  enabled: true
+
   redisPassword: "gitlab"
 
   resources:

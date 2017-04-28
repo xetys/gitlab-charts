@@ -7,8 +7,8 @@
 This chart stands up a GitLab Community Edition install. This includes:
 
 - A [GitLab Omnibus](https://docs.gitlab.com/omnibus/) Pod
-- Redis
-- Postgresql
+- Redis (enabled by default, can be configured to connect to an existing redis instead)
+- Postgresql (enabled by default, can be configured to connect to an existing postgresql instead)
 
 ## Prerequisites
 
