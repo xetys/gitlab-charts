@@ -21,6 +21,12 @@ image: gitlab/gitlab-ce:9.1.1-ce.0
 ##
 #gitlabRootPassword: ""
 
+## Run an additional command after the application has been started
+## For example, if you want to register a new oauth application with GitLab, like
+## your Mattermost server, provide the script to do so here
+##.
+#postReconfigureScript: ""
+
 ## For minikube, set this to NodePort, elsewhere use LoadBalancer
 ## ref: http://kubernetes.io/docs/user-guide/services/#publishing-services---service-types
 ##
@@ -139,3 +145,15 @@ redis:
 
   persistence:
     size: 10Gi
+
+omnibusConfigRuby: |
+  unicorn['worker_processes'] = 2;
+  manage_accounts['enable'] = true;
+  manage_storage_directories['manage_etc'] = false;
+  gitlab_shell['auth_file'] = '/gitlab-data/ssh/authorized_keys';
+  git_data_dir '/gitlab-data/git-data';
+  gitlab_rails['shared_path'] = '/gitlab-data/shared';
+  gitlab_rails['uploads_directory'] = '/gitlab-data/uploads';
+  gitlab_rails['registry_path'] = 'gitlab-registry';
+  gitlab_ci['builds_directory'] = '/gitlab-data/builds';
+  gitlab_rails['trusted_proxies'] = ["10.0.0.0/8","172.16.0.0/12","192.168.0.0/16"];

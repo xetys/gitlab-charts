@@ -31,6 +31,10 @@ spec:
             configMapKeyRef:
               name: {{ template "fullname" . }}
               key: gitlab_omnibus_config
+        {{- if default "" .Values.postReconfigureScript }}
+        - name: GITLAB_POST_RECONFIGURE_SCRIPT
+          value: {{ .Values.postReconfigureScript }}
+        {{ end }}
         - name: GITLAB_ROOT_PASSWORD
         {{- if default "" .Values.gitlabRootPassword }}
           valueFrom:
