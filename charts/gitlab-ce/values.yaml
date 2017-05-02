@@ -44,7 +44,8 @@ prometheusPort: 9090
 nodeExporterPort: 9100
 
 ## Configuration values for mattermost
-mattermostAppSecret: "gitlab"
+mattermostAppSecret: gitlab
+mattermostAppUID: aadas
 
 ## Configure access to an external database
 ## For these settings to be used you need to disable

@@ -33,8 +33,8 @@ spec:
               key: gitlab_omnibus_config
         {{- if default "" .Values.postReconfigureScript }}
         - name: GITLAB_POST_RECONFIGURE_SCRIPT
-          value: {{ .Values.postReconfigureScript }}
-        {{ end }}
+          value: "/bin/bash /scripts/post_reconfigure_script"
+        {{- end }}
         - name: GITLAB_ROOT_PASSWORD
         {{- if default "" .Values.gitlabRootPassword }}
           valueFrom:
@@ -69,6 +69,16 @@ spec:
             secretKeyRef:
               name: {{ template "fullname" . }}
               key: redis-password
+        - name: MATTERMOST_APP_UID
+          valueFrom:
+            configMapKeyRef:
+              name: {{ template "fullname" . }}
+              key: mattermost_app_uid
+        - name: MATTERMOST_APP_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "fullname" . }}
+              key: mattermost_app_secret
         ports:
         - name: ssh
           containerPort: 22
@@ -93,7 +103,7 @@ spec:
           # This pod takes a very long time to start up. Be cautious when
           # lowering this value to avoid Pod death during startup.
           initialDelaySeconds: 200
-          timeoutSeconds: 1
+          timeoutSeconds: 15
           periodSeconds: 10
           successThreshold: 1
           failureThreshold: 10
@@ -101,12 +111,16 @@ spec:
           httpGet:
             path: /help
             port: http
-          initialDelaySeconds: 30
+          initialDelaySeconds: 60
           timeoutSeconds: 1
           periodSeconds: 10
           successThreshold: 1
           failureThreshold: 3
         volumeMounts:
+        {{- if default "" .Values.postReconfigureScript }}
+        - name: scripts
+          mountPath: /scripts
+        {{- end }}
         - name: gitlab-etc
           mountPath: /etc/gitlab
         - name: gitlab-data
@@ -116,6 +130,11 @@ spec:
         resources:
 {{ toYaml .Values.resources | indent 10 }}
       volumes:
+      {{- if default "" .Values.postReconfigureScript }}
+      - name: scripts
+        configMap:
+          name: {{ template "fullname" . }}-scripts
+      {{- end }}
       - name: gitlab-etc
       {{- if .Values.persistence.gitlabEtc.enabled }}
         persistentVolumeClaim:
