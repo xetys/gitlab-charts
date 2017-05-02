@@ -112,6 +112,32 @@ persistence:
     # storageClass:
     accessMode: ReadWriteOnce
 
+ingress:
+  ## If true, gitlab Ingress will be created
+  ##
+  enabled: false
+
+  ## gitlab Ingress annotations
+  ##
+  annotations: {}
+  #   kubernetes.io/ingress.class: nginx
+  #   kubernetes.io/tls-acme: 'true'
+
+  ## gitlab Ingress hostnames
+  ## Must be provided if Ingress is enabled
+  ##
+  hosts: []
+  #   - gitlab.example.com
+  #   - registry.example.com
+
+  ## gitlab Ingress TLS configuration
+  ## Secrets must be created in the namespace, and is not done for you in this chart
+  ##
+  tls: []
+  #   - secretName: gitlab-tls
+  #     hosts:
+  #       - gitlab.example.com
+
 ## Configuration values for the postgresql dependency.
 ## ref: https://github.com/kubernetes/charts/blob/master/stable/postgresql/README.md
 ##
