@@ -1,3 +1,19 @@
+{{- if and (not .Values.postgresql.enabled) (not .Values.dbHost) }}
+##############################################################################
+## WARNING: You have not specified a Database Host to connect to.           ##
+##############################################################################
+
+This deployment will be incomplete until you provide the dbHost to connect to,
+or enable the postgresql dependency
+{{- end }}
+{{- if and (not .Values.redis.enabled) (not .Values.redisHost) }}
+##############################################################################
+## WARNING: You have not specified a Redis Host to connect to.              ##
+##############################################################################
+
+This deployment will be incomplete until you provide the redisHost to connect to,
+or enable the redis dependency
+{{- end }}
 {{- if default "" .Values.externalUrl }}
 1. Get your GitLab URL by running:
 
