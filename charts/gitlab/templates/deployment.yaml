@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: {{ template "fullname" . }}
-        image: {{ .Values.image }}
+        image: {{ template "image" . }}
         imagePullPolicy: {{ default "" .Values.imagePullPolicy | quote }}
         env:
         ## General GitLab Configs

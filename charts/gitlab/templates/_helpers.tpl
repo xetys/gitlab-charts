@@ -108,3 +108,16 @@ Otherwise it will return the set value
 {{- default "" .Values.redisPassword | b64enc | quote -}}
 {{- end -}}
 {{- end -}}
+
+{{/*
+Return the container image to use based on the edition being used (CE or EE)
+If edition=EE then use eeImage value
+Otherise use the ceImage
+*/}}
+{{- define "image" -}}
+{{- if eq (upper .Values.edition) "EE" -}}
+{{- .Values.eeImage | quote -}}
+{{- else -}}
+{{- .Values.ceImage | quote -}}
+{{- end -}}
+{{- end -}}
