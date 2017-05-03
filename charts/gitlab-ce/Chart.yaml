@@ -1,5 +1,5 @@
 name: gitlab-ce
-version: 0.1.9
+version: 0.1.10
 description: GitLab Community Edition
 keywords:
 - git
@@ -14,5 +14,6 @@ sources:
 - https://docs.gitlab.com/omnibus/
 icon: https://gitlab.com/uploads/group/avatar/6543/gitlab-logo-square.png
 maintainers:
-- name: Greg Taylor
-  email: gtaylor@gc-taylor.com
+- name: GitLab Inc.
+  email: support@gitlab.com
+- name: DJ Mountney
