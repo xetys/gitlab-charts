@@ -19,7 +19,7 @@ This chart stands up a GitLab Community Edition (CE) or GitLab Enterprise Editio
 
 ## Installing the Chart
 
-First you need to add the gitlab chart repo if you have done so already
+First you need to add the gitlab chart repo if you haven't done so already
 
 ```bash
 helm repo add gitlab https://charts.gitlab.io
