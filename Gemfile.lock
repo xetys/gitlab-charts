@@ -1,0 +1,13 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    kramdown (1.13.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  kramdown (~> 1.13.0)
+
+BUNDLED WITH
+   1.12.5
