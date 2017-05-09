@@ -8,19 +8,7 @@ place to start is by reviewing the [Helm Quick Start Guide](https://github.com/k
 
 ### Usage
 
-Add GitLab Chart Repo:
-
-```bash
-$ helm repo add gitlab https://charts.gitlab.io
-```
-
-Then you can install charts using the  `gitlab` repo:
-
-```bash
-$ helm install gitlab/gitlab
-```
-
-Additional installation instructions, including configuration options, can be found in our [documentation](http://docs.gitlab.com/ce/install/kubernetes/).
+Installation instructions, including configuration options, can be found in our [documentation](http://docs.gitlab.com/ce/install/kubernetes/).
 
 The charts currently available to install can be found here: <https://gitlab.com/charts/charts.gitlab.io/tree/master/charts>
 
