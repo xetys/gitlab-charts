@@ -1,6 +1,8 @@
+**This chart has been deprecated as of version 0.1.11 and will not be updated. Please use the gitlab chart instead.**
+
 # GitLab Community Edition
 
-[GitLab Community Edition](https://about.gitlab.com/) is an application to code, test, and deploy code together. It provides Git repository management with fine grained access controls, code reviews, issue tracking, activity feeds, wikis, and continuous integration. 
+[GitLab Community Edition](https://about.gitlab.com/) is an application to code, test, and deploy code together. It provides Git repository management with fine grained access controls, code reviews, issue tracking, activity feeds, wikis, and continuous integration.
 
 ## Introduction
 
