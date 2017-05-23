@@ -44,6 +44,11 @@ eeImage: gitlab/gitlab-ee:9.1.2-ee.0
 ##
 serviceType: LoadBalancer
 
+## Optional annotations for gitlab service.
+## Example use: https://kubernetes.io/docs/concepts/services-networking/service/#internal-load-balancer-on-aws
+serviceAnnotations: {}
+  #   service.beta.kubernetes.io/aws-load-balancer-internal: 0.0.0.0/0
+
 ## Configure external service ports
 ## ref: http://kubernetes.io/docs/user-guide/services/
 sshPort: 22
