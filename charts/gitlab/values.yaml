@@ -25,8 +25,6 @@ eeImage: gitlab/gitlab-ee:9.2.2-ee.0
 ## ref: https://docs.gitlab.com/omnibus/settings/configuration.html#configuring-the-external-url-for-gitlab
 ##
 #externalUrl: http://your-domain.com/
-#registryExternalUrl: http://registry.your-domain.com/
-#mattermostExternalUrl: http://mattermost.your-domain.com/
 
 ## Change the initial default admin password if set. If not set, you'll be
 ## able to set it when you first visit your install.
@@ -54,15 +52,13 @@ serviceAnnotations: {}
 sshPort: 22
 httpPort: 80
 httpsPort: 443
-mattermostPort: 8065
-registryPort: 8105
 workhorsePort: 8005
 prometheusPort: 9090
 nodeExporterPort: 9100
 
-## Configuration values for mattermost
-mattermostAppSecret: gitlab
-mattermostAppUID: aadas
+## Optional additional ports
+# mattermostPort: 8065
+# registryPort: 8105
 
 ## Configure access to an external database
 ## For these settings to be used you need to disable

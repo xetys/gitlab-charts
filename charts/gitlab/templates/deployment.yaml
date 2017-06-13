@@ -69,16 +69,6 @@ spec:
             secretKeyRef:
               name: {{ template "gitlab.fullname" . }}
               key: redis-password
-        - name: MATTERMOST_APP_UID
-          valueFrom:
-            configMapKeyRef:
-              name: {{ template "gitlab.fullname" . }}
-              key: mattermost_app_uid
-        - name: MATTERMOST_APP_SECRET
-          valueFrom:
-            secretKeyRef:
-              name: {{ template "gitlab.fullname" . }}
-              key: mattermost_app_secret
         ports:
         - name: ssh
           containerPort: 22
