@@ -5,7 +5,7 @@ metadata:
   name: fast
   namespace: gitlab
   annotations:
-    storageclass.beta.kubernetes.io/is-default-class: "true"
+    storageclass.beta.kubernetes.io/is-default-class: "false"
   labels:
     kubernetes.io/cluster-service: "true"
 {{- if eq .Values.provider "gke" }}
