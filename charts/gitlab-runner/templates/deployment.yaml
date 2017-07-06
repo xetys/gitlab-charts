@@ -79,6 +79,11 @@ spec:
         volumeMounts:
         - name: scripts
           mountPath: /scripts
+        {{- if .Values.certsSecretName }}
+        - name: custom-certs
+          readOnly: true
+          mountPath: /etc/gitlab-runner/certs/
+        {{- end }}
         resources:
 {{ toYaml .Values.resources | indent 10 }}
       volumes:
@@ -87,6 +92,11 @@ spec:
         hostPath:
           path: /var/run/docker.sock
       {{ end }}
+      {{- if .Values.certsSecretName }}
+      - name: custom-certs
+        secret:
+          secretName: {{ .Values.certsSecretName }}
+      {{- end }}
       - name: scripts
         configMap:
           name: {{ template "fullname" . }}
