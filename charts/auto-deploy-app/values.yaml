@@ -3,7 +3,7 @@
 # Declare variables to be passed into your templates.
 replicaCount: 1
 image:
-#  repository: gitlab.example.com/group/project
+  repository: gitlab.example.com/group/project
   tag: stable
   pullPolicy: Always
 application:
@@ -13,7 +13,7 @@ service:
   enabled: true
   name: web
   type: ClusterIP
-#  url: http://my.host.com/
+  url: http://my.host.com/
   externalPort: 5000
   internalPort: 5000
 postgresql:
