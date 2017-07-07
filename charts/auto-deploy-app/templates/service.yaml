@@ -5,7 +5,7 @@ metadata:
   name: {{ template "fullname" . }}
   labels:
     app: {{ template "appname" . }}
-    chart: "{{ .Chart.Name }}-{{ .Chart.Version| replace "+" "_" }}"
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
 spec:
   type: {{ .Values.service.type }}
   ports:
