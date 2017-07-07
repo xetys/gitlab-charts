@@ -8,17 +8,17 @@ Expand the name of the chart.
 
 {{/*
 Create a default fully qualified app name.
-We truncate at 24 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
+We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 */}}
 {{- define "fullname" -}}
 {{- $name := default .Chart.Name .Values.nameOverride -}}
-{{- printf "%s-%s" .Release.Name $name | trimSuffix "-app" | trunc 24 | trimSuffix "-" -}}
+{{- printf "%s-%s" .Release.Name $name | trimSuffix "-app" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
 {{- define "appname" -}}
 {{- $name := default .Chart.Name .Values.nameOverride -}}
 {{- $releaseName := default .Release.Name .Values.releaseOverride -}}
-{{- printf "%s-%s" $releaseName $name | trimSuffix "-app" | trunc 24 | trimSuffix "-" -}}
+{{- printf "%s-%s" $releaseName $name | trimSuffix "-app" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
 {{/*
