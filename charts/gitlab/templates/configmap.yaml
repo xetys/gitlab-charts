@@ -8,18 +8,13 @@ metadata:
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
 data:
-  mattermost_app_uid: {{ .Values.mattermostAppUID }}
   ## This is used by GitLab Omnibus as the primary means of configuration.
   ## ref: https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/files/gitlab-config-template/gitlab.rb.template
-  ##
-  #    registry_external_url ENV['REGISTRY_EXTERNAL_URL'] || "#{ENV['BASE_SCHEME']}://registry.#{ENV['BASE_DOMAIN']}"
-  #    mattermost_external_url ENV['MATTERMOST_EXTERNAL_URL'] || "#{ENV['GITLAB_MATTERMOST_EXTERNAL_SCHEME']}://#{ENV['GITLAB_MATTERMOST_EXTERNAL_HOSTNAME']}"
-
   gitlab_omnibus_config: |
+    ## Default Configuration
     external_url ENV['EXTERNAL_URL'];
     root_pass = ENV['GITLAB_ROOT_PASSWORD'];
     gitlab_rails['initial_root_password'] = root_pass unless root_pass.to_s == '';
-    registry['registry_http_addr'] = '0.0.0.0:8105';
     postgresql['enable'] = false;
     gitlab_rails['db_host'] = ENV['DB_HOST'];
     gitlab_rails['db_password'] = ENV['DB_PASSWORD'];
@@ -36,15 +31,25 @@ data:
     gitlab_rails['uploads_directory'] = '/gitlab-data/uploads';
     gitlab_ci['builds_directory'] = '/gitlab-data/builds';
     gitlab_rails['registry_path'] = '/gitlab-registry';
-    prometheus['listen_address'] = '0.0.0.0:9090'
-    node_exporter['enable'] = true
-    postgres_exporter['enable'] = true
+    node_exporter['enable'] = true;
+    postgres_exporter['enable'] = true;
     postgres_exporter['env'] = {
       'DATA_SOURCE_NAME' => "user=#{ENV['DB_USER']} host=#{ENV['DB_HOST']} port=5432 dbname=#{ENV['DB_DATABASE']} password=#{ENV['DB_PASSWORD']} sslmode=disable"
-    }
-    redis_exporter['enable'] = true
+    };
+    redis_exporter['enable'] = true;
     redis_exporter['flags'] = {
       'redis.addr' => "#{ENV['REDIS_HOST']}:6379",
       'redis.password' => "#{ENV['REDIS_PASSWORD']}"
-    }
+    };
+
+    ## Custom Config
 {{ .Values.omnibusConfigRuby | indent 4 }}
+
+    ## Hardcoded Container Ports (Hardcoded in the Deployment)
+    gitlab_workhorse['listen_network'] = 'tcp';
+    gitlab_workhorse['listen_addr'] = '0.0.0.0:8005';
+    registry['registry_http_addr'] = '0.0.0.0:8105';
+    mattermost['service_address'] = '0.0.0.0';
+    mattermost['service_port'] = '8065';
+    prometheus['listen_address'] = '0.0.0.0:9090';
+    node_exporter['listen_address'] = '0.0.0.0:9100';

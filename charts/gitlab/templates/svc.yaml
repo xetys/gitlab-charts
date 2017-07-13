@@ -23,12 +23,16 @@ spec:
   - name: https
     port: {{ .Values.httpsPort | int }}
     targetPort: https
+{{- if .Values.mattermostPort }}
   - name: mattermost
     port: {{ .Values.mattermostPort | int }}
     targetPort: mattermost
+{{- end }}
+{{- if .Values.registryPort }}
   - name: registry
     port: {{ .Values.registryPort | int }}
     targetPort: registry
+{{- end }}
   - name: workhorse
     port: {{ .Values.workhorsePort | int }}
     targetPort: workhorse
