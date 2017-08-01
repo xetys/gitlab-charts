@@ -8,12 +8,12 @@ edition: CE
 ## GitLab CE image
 ## ref: https://hub.docker.com/r/gitlab/gitlab-ce/tags/
 ##
-ceImage: gitlab/gitlab-ce:9.3.0-ce.0
+ceImage: gitlab/gitlab-ce:9.4.1-ce.0
 
 ## GitLab EE image
 ## ref: https://hub.docker.com/r/gitlab/gitlab-ee/tags/
 ##
-eeImage: gitlab/gitlab-ee:9.3.0-ee.0
+eeImage: gitlab/gitlab-ee:9.4.1-ee.0
 
 ## Specify a imagePullPolicy
 ## 'Always' if imageTag is 'latest', else set to 'IfNotPresent'
