@@ -6,6 +6,8 @@ image:
   repository: gitlab.example.com/group/project
   tag: stable
   pullPolicy: Always
+  secrets:
+    - gitlab-registry
 application:
   track: stable
   tier: web
