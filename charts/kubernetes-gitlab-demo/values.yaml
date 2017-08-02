@@ -20,8 +20,8 @@
 gitlabNamespace: gitlab
 # `ce` or `ee`
 gitlab: ce
-gitlabCEImage: gitlab/gitlab-ce:9.3.0-ce.0
-gitlabEEImage: gitlab/gitlab-ee:9.3.0-ee.0
+gitlabCEImage: gitlab/gitlab-ce:9.3.7-ce.0
+gitlabEEImage: gitlab/gitlab-ee:9.3.7-ee.0
 postgresPassword: NDl1ZjNtenMxcWR6NXZnbw==
 initialSharedRunnersRegistrationToken: "tQtCbx5UZy_ByS7FyzUH"
 mattermostAppSecret: NDl1ZjNtenMxcWR6NXZnbw==
