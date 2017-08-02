@@ -1,4 +1,4 @@
-{{- if and (include "gitlabUrl" .) (default "" .Values.runnerRegistrationToken) }}
+{{- if and (include "gitlabUrl" .) (default "" .Values.runnerToken) }}
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
