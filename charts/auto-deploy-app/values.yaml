@@ -7,7 +7,7 @@ image:
   tag: stable
   pullPolicy: Always
   secrets:
-    - gitlab-registry
+    - name: gitlab-registry
 application:
   track: stable
   tier: web
