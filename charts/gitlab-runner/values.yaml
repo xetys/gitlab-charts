@@ -20,8 +20,6 @@ image: gitlab/gitlab-runner:alpine-v9.4.1
 ##
 # runnerRegistrationToken: ""
 
-# runnerToken: ""
-
 ## Set the certsSecretName in order to pass custom certficates for GitLab Runner to use
 ## Provide resource name for a Kubernetes Secret Object in the same namespace,
 ## this is used to populate the /etc/gitlab-runner/certs directory
