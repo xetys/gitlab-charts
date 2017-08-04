@@ -1,6 +1,6 @@
 ## GitLab Helm Charts
 
-This repository contains GitLab's official Helm charts. These charts make it easier to deploy, upgrade, and maintain GitLab on Kubernetes.
+This repository contains GitLab's official Helm charts. These charts make it easier to deploy, upgrade, and maintain GitLab on Kubernetes. These charts are automatically published to our Helm repo, located at [charts.gitlab.io](https://charts.gitlab.io).
 
 Charts in this repository should be considered beta. We are building a set of Cloud Native
 charts at a separate repo at [helm.gitlab.io](https://gitlab.com/charts/helm.gitlab.io). The goal of that work
