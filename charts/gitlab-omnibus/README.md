@@ -25,16 +25,15 @@ Terms:
 
 ## Prerequisites
 
--  [Google Cloud Platform](https://cloud.google.com/) or [Azure](https://portal.azure.com) account. This can be a trial, or paid account. The trial has lower limitations, so extensive
-testing with GitLab's Review Apps feature may exceed those limitations.
--  [Google Cloud SDK](https://cloud.google.com/sdk/) for using `gcloud` commands or [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli) for using `az` commands. These SDKs also includes the necessary `kubectl` utilities.
--  Access to a `bash` shell. It is recommended at this time to use a GNU/Linux-based or OSX operating system.
--  Access to the internet via HTTPS traffic.
-
-- _At least_ 4 GB of RAM available on your cluster
-- _At least_ 2vCPUs per node in your cluster
+- _At least_ 4 GB of RAM available on your cluster, in chunks of 1 GB. 41GB of storage and 2 CPU are also required.
 - Kubernetes 1.4+ with Beta APIs enabled
-- The ability to point a DNS entry or URL at your GitLab install
+- [Persistent Volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) provisioner support in the underlying infrastructure
+- An [external IP address](#networking-prerequisites)
+- A [wildcard DNS entry](#networking-prerequisites), which resolves to the external IP address
+- The `kubectl` CLI installed locally and authenticated for the cluster
+- The Helm Client installed locally
+- The Helm Server (Tiller) already installed and running in the cluster, by running `helm init`
+- The GitLab Helm Repo [added to your Helm Client](index.md#add-the-gitlab-helm-repository)
 
 ## Installing the Chart
 
