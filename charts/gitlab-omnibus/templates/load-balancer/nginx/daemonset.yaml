@@ -9,7 +9,7 @@ spec:
       labels:
         app: nginx
       annotations:
-        prometheus.io/port: "9913"
+        prometheus.io/port: "10254"
         prometheus.io/scrape: "true"
     spec:
       containers:
@@ -37,24 +37,9 @@ spec:
         - containerPort: 443
         - containerPort: 22
         - containerPort: 18080
+        - containerPort: 10254
         args:
         - /nginx-ingress-controller
         - --default-backend-service=nginx-ingress/default-http-backend
         - --configmap=nginx-ingress/nginx
         - --tcp-services-configmap=nginx-ingress/tcp-ports
-      - image: quay.io/cy-play/vts-nginx-exporter:v0.0.3
-        name: stats-exporter
-        imagePullPolicy: IfNotPresent
-        env:
-          - name: METRICS_ADDR
-            value: ":9913"
-          - name: METRICS_ENDPOINT
-            value: "/metrics"
-          - name: NGINX_STATUS
-            value: "http://localhost:18080/nginx_status/format/json"
-          - name: METRICS_NS
-            value: "nginx"
-        ports:
-          - name: metrics
-            containerPort: 9913
-            protocol: TCP
