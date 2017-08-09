@@ -44,10 +44,13 @@ To install the chart with the release name `my-release` run:
 $ helm repo add gitlab https://charts.gitlab.io
 $ helm install --name my-release \
     --set baseDomain=example.com,legoEmail=you@example.com \
-    gitlab/kubernetes-gitlab-demo
+    gitlab/gitlab-omnibus
 ```
 
-Note that you _must_ pass in baseIP, baseDomain, and legoEmail, or you'll end up with a non-functioning release.
+Note that you _must_ pass in baseIP, baseDomain, and legoEmail, or you'll end up with a non-functioning release. 
+* baseDomain: This is the base domain name to be used for the GitLab server, for example `mycompany.io`. There should be a wildcard DNS entry pointing to the `baseIP`, because GitLab makes use of a variety of hostnames. For more information please review [our documentation](https://docs.gitlab.com/ee/install/kubernetes/gitlab_omnibus.md). 
+* baseIP: This is the desired external IP address that will be assigned as the Load Balancer IP. 
+* 
 
 > **Tip**: List all releases using `helm list`
 
@@ -72,13 +75,13 @@ $ helm install --name my-release \
     --set baseIP=172.16.254.1,baseDomain=example.com,legoEmail=you@example.com, \
     --set postgresPassword=foobar \
     --set gitlab=ee,gitlabEELicense=$LICENSE \
-    gitlab/kubernetes-gitlab-demo
+    gitlab/gitlab-omnibus
 ```
 
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```bash
-$ helm install --name my-release -f values.yaml gitlab/kubernetes-gitlab-demo
+$ helm install --name my-release -f values.yaml gitlab/gitlab-omnibus
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
