@@ -7,7 +7,6 @@ The charts are automatically published to our Helm repo, located at [charts.gitl
 Charts in this repository should be considered beta. We are building a set of Cloud Native
 charts at a separate repo at [helm.gitlab.io](https://gitlab.com/charts/helm.gitlab.io). The goal of that work
 is to fully replace the charts in this repository as well as [the community supported charts](https://github.com/kubernetes/charts/tree/master/stable/gitlab-ce).
-For more details, see the discussion and a [conclusion in issue #15](https://gitlab.com/charts/charts.gitlab.io/issues/15#note_36465690).
 
 ### Usage
 
