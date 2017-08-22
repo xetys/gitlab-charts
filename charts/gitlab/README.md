@@ -1,7 +1,7 @@
 > This chart is beta. We are building a set of Cloud Native
-charts at a helm.gitlab.io. The goal of that work
-is to fully replace this charts for more details, see the discussion and a conclusion in issue #15.
+charts at [helm.gitlab.io](https://gitlab.com/charts/helm.gitlab.io). The goal of that work
+is to fully replace this chart.
 
 # GitLab Helm Chart
 
-This chart includes just the GitLab service. For more information, please review [our documentation](http://docs.gitlab.com/ce/install/kubernetes/gitlab_chart.html).
+This chart includes just the GitLab service. For more information, please review [our documentation](http://docs.gitlab.com/ee/install/kubernetes/gitlab_chart.html).
