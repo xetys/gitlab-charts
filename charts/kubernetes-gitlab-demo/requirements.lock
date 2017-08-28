@@ -1,11 +1,6 @@
 dependencies:
-- alias: ""
-  condition: ""
-  enabled: false
-  import-values: null
-  name: gitlab-runner
+- name: gitlab-runner
   repository: https://charts.gitlab.io/
-  tags: null
-  version: 0.1.7
-digest: sha256:c5a8cf2decce9118fc531f03f08ca4c51912814aeb88159033994ba34cd0f00f
-generated: 2017-06-23T07:33:44.327893066-07:00
+  version: 0.1.9
+digest: sha256:85fd45778bdea83d6c0293d62a3f9f8a2845dbf0a277b5a6bdb1a3cf4f4d2f3b
+generated: 2017-08-28T15:24:52.876583335-05:00
