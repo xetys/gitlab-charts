@@ -22,3 +22,5 @@ Issues related to the Charts can be logged at: <https://gitlab.com/charts/charts
 ### Contributing to the Charts
 
 We welcome contributions and improvements. The source repo for our Helm Charts can be found here: <https://gitlab.com/charts/charts.gitlab.io>
+
+Please see the [contribution guidelines](CONTRIBUTING.md)
