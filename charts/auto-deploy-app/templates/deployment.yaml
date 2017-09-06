@@ -15,7 +15,6 @@ spec:
         app: {{ template "appname" . }}
         track: "{{ .Values.application.track }}"
         tier: "{{ .Values.application.tier }}"
-        chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
     spec:
       imagePullSecrets:
 {{ toYaml .Values.image.secrets | indent 10 }}
