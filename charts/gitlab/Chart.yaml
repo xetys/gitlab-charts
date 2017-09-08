@@ -1,5 +1,5 @@
 name: gitlab
-version: 0.1.7
+version: 0.1.8
 description: "GitLab. Collaboration and source control management: code, test, and deploy together!"
 keywords:
 - git
