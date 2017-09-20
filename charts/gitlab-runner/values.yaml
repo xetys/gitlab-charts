@@ -60,24 +60,24 @@ runners:
   builds:
     # cpuLimit: 200m
     # memoryLimit: 256Mi
-    cpuRequests: 100m
-    memoryRequests: 128Mi
+    # cpuRequests: 100m
+    # memoryRequests: 128Mi
 
   ## Service Container specific configuration
   ##
   services:
     # cpuLimit: 200m
     # memoryLimit: 256Mi
-    cpuRequests: 100m
-    memoryRequests: 128Mi
+    # cpuRequests: 100m
+    # memoryRequests: 128Mi
 
   ## Helper Container specific configuration
   ##
   helpers:
     # cpuLimit: 200m
     # memoryLimit: 256Mi
-    cpuRequests: 100m
-    memoryRequests: 128Mi
+    # cpuRequests: 100m
+    # memoryRequests: 128Mi
 
 ## Configure resource requests and limits
 ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
@@ -86,6 +86,6 @@ resources:
   # limits:
   #   memory: 256Mi
   #   cpu: 200m
-  requests:
-    memory: 128Mi
-    cpu: 100m
+  # requests:
+  #   memory: 128Mi
+  #   cpu: 100m
