@@ -47,12 +47,35 @@ gitlab-runner:
   checkInterval: 1
   # runnerRegistrationToken must equal initialSharedRunnersRegistrationToken
   runnerRegistrationToken: "tQtCbx5UZy_ByS7FyzUH"
-  resources:
-    limits:
-      memory: 500Mi
-      cpu: 600m
-    requests:
-      memory: 500Mi
-      cpu: 600m
+  # resources:
+  #   limits:
+  #     memory: 500Mi
+  #     cpu: 600m
+  #   requests:
+  #     memory: 500Mi
+  #     cpu: 600m
   runners:
     privileged: true
+    ## Build Container specific configuration
+    ##
+    builds:
+      # cpuLimit: 200m
+      # memoryLimit: 256Mi
+      # cpuRequests: 100m
+      # memoryRequests: 128Mi
+
+    ## Service Container specific configuration
+    ##
+    services:
+      # cpuLimit: 200m
+      # memoryLimit: 256Mi
+      # cpuRequests: 100m
+      # memoryRequests: 128Mi
+
+    ## Helper Container specific configuration
+    ##
+    helpers:
+      # cpuLimit: 200m
+      # memoryLimit: 256Mi
+      # cpuRequests: 100m
+      # memoryRequests: 128Mi
