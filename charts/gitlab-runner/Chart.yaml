@@ -1,5 +1,5 @@
 name: gitlab-runner
-version: 0.1.11
+version: 0.1.12
 description: GitLab Runner
 keywords:
 - git
@@ -8,6 +8,7 @@ keywords:
 sources:
 - https://hub.docker.com/r/gitlab/gitlab-runner/
 - https://docs.gitlab.com/runner/
+icon: https://gitlab.com/uploads/-/system/project/avatar/250833/runner_logo.png
 maintainers:
 - name: GitLab Inc.
   email: support@gitlab.com

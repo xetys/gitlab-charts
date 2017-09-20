@@ -57,7 +57,7 @@ runners:
 
   ## Build Container specific configuration
   ##
-  builds:
+  builds: {}
     # cpuLimit: 200m
     # memoryLimit: 256Mi
     # cpuRequests: 100m
@@ -65,7 +65,7 @@ runners:
 
   ## Service Container specific configuration
   ##
-  services:
+  services: {}
     # cpuLimit: 200m
     # memoryLimit: 256Mi
     # cpuRequests: 100m
@@ -73,7 +73,7 @@ runners:
 
   ## Helper Container specific configuration
   ##
-  helpers:
+  helpers: {}
     # cpuLimit: 200m
     # memoryLimit: 256Mi
     # cpuRequests: 100m
@@ -82,7 +82,7 @@ runners:
 ## Configure resource requests and limits
 ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
 ##
-resources:
+resources: {}
   # limits:
   #   memory: 256Mi
   #   cpu: 200m
