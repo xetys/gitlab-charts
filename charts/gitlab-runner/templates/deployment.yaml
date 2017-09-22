@@ -62,7 +62,7 @@ spec:
           value: {{ default "" .Values.runners.helpers.memoryRequests| quote }}
         livenessProbe:
           exec:
-            command: ["/usr/bin/pgrep","gitlab-ci-multi"]
+            command: ["/usr/bin/pgrep","gitlab.*runner"]
           initialDelaySeconds: 60
           timeoutSeconds: 1
           periodSeconds: 10
@@ -70,7 +70,7 @@ spec:
           failureThreshold: 3
         readinessProbe:
           exec:
-            command: ["/usr/bin/pgrep","gitlab-ci-multi"]
+            command: ["/usr/bin/pgrep","gitlab.*runner"]
           initialDelaySeconds: 10
           timeoutSeconds: 1
           periodSeconds: 10
