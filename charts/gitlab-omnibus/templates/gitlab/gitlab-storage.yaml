@@ -7,8 +7,8 @@ metadata:
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
-  {{- if .Values.gitlabRailsStorageClass }}
-    volume.beta.kubernetes.io/storage-class: {{ .Values.gitlabRailsStorageClass | quote }}
+  {{- if .Values.gitlabDataStorageClass }}
+    volume.beta.kubernetes.io/storage-class: {{ .Values.gitlabDataStorageClass | quote }}
   {{- else if (eq .Values.provider "gke") }}
   annotations:
     volume.beta.kubernetes.io/storage-class: {{ template "fullname" . }}-fast
@@ -17,10 +17,11 @@ metadata:
   {{- end }}
 spec:
   accessModes:
-    - {{ default "ReadWriteOnce" .Values.gitlabRailsAccessMode | quote }}
+    - {{ default "ReadWriteOnce" .Values.gitlabDataAccessMode | quote }}
   resources:
     requests:
-      storage: {{ .Values.gitlabRailsStorageSize }}
+      # Fallback to supporting older value: gitlabRailsStorageSize when the new one is not set 
+      storage: {{ coalesce .Values.gitlabDataStorageSize .Values.gitlabRailsStorageSize }}
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
