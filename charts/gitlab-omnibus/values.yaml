@@ -28,19 +28,19 @@ mattermostAppSecret: NDl1ZjNtenMxcWR6NXZnbw==
 mattermostAppUID: aadas
 redisImage: redis:3.2.10
 redisDedicatedStorage: true
-redisStorageSize: 5Gi
+#redisStorageSize: 5Gi
 redisAccessMode: ReadWriteOnce
 postgresImage: postgres:9.6.3
 # If you disable postgresDedicatedStorage, you should consider bumping up gitlabRailsStorageSize
 postgresDedicatedStorage: true
 postgresAccessMode: ReadWriteOnce
-postgresStorageSize: 30Gi
+#postgresStorageSize: 30Gi
 gitlabDataAccessMode: ReadWriteOnce
-gitlabDataStorageSize: 30Gi
+#gitlabDataStorageSize: 30Gi
 gitlabRegistryAccessMode: ReadWriteOnce
-gitlabRegistryStorageSize: 30Gi
+#gitlabRegistryStorageSize: 30Gi
 gitlabConfigAccessMode: ReadWriteOnce
-gitlabConfigStorageSize: 1Gi
+#gitlabConfigStorageSize: 1Gi
 gitlabRunnerImage: gitlab/gitlab-runner:alpine-v9.5.0
 # Valid values for provider are `gke` for Google Container Engine. Leaving it blank (or any othervalue) will disable fast disk options.
 provider: gke

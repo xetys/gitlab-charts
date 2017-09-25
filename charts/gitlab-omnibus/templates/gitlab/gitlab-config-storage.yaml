@@ -20,4 +20,4 @@ spec:
     - {{ default "ReadWriteOnce" .Values.gitlabConfigAccessMode | quote }}
   resources:
     requests:
-      storage: {{ .Values.gitlabConfigStorageSize }}
+      storage: {{ default "1Gi" .Values.gitlabConfigStorageSize }}

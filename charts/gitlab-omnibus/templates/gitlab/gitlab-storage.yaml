@@ -20,8 +20,8 @@ spec:
     - {{ default "ReadWriteOnce" .Values.gitlabDataAccessMode | quote }}
   resources:
     requests:
-      # Fallback to supporting older value: gitlabRailsStorageSize when the new one is not set 
-      storage: {{ coalesce .Values.gitlabDataStorageSize .Values.gitlabRailsStorageSize }}
+      # Fallback to supporting older value: gitlabRailsStorageSize when the new one is not set
+      storage: {{ coalesce .Values.gitlabDataStorageSize .Values.gitlabRailsStorageSize "30Gi" }}
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -45,4 +45,4 @@ spec:
     - {{ default "ReadWriteOnce" .Values.gitlabRegistryAccessMode | quote }}
   resources:
     requests:
-      storage: {{ .Values.gitlabRegistryStorageSize }}
+      storage: {{ default "30Gi" .Values.gitlabRegistryStorageSize }}
