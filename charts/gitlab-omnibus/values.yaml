@@ -28,17 +28,33 @@ mattermostAppSecret: NDl1ZjNtenMxcWR6NXZnbw==
 mattermostAppUID: aadas
 redisImage: redis:3.2.10
 redisDedicatedStorage: true
-redisStorageSize: 5Gi
+#redisStorageSize: 5Gi
+redisAccessMode: ReadWriteOnce
 postgresImage: postgres:9.6.3
 # If you disable postgresDedicatedStorage, you should consider bumping up gitlabRailsStorageSize
 postgresDedicatedStorage: true
-postgresStorageSize: 30Gi
-gitlabRailsStorageSize: 30Gi
-gitlabRegistryStorageSize: 30Gi
-gitlabConfigStorageSize: 1Gi
+postgresAccessMode: ReadWriteOnce
+#postgresStorageSize: 30Gi
+gitlabDataAccessMode: ReadWriteOnce
+#gitlabDataStorageSize: 30Gi
+gitlabRegistryAccessMode: ReadWriteOnce
+#gitlabRegistryStorageSize: 30Gi
+gitlabConfigAccessMode: ReadWriteOnce
+#gitlabConfigStorageSize: 1Gi
 gitlabRunnerImage: gitlab/gitlab-runner:alpine-v9.5.0
 # Valid values for provider are `gke` for Google Container Engine. Leaving it blank (or any othervalue) will disable fast disk options.
 provider: gke
+
+## Storage Class Options
+## If defined, volume.beta.kubernetes.io/storage-class: <storageClass>
+## If not defined, but provider is gke, will use SSDs
+## Otherwise default: volume.alpha.kubernetes.io/storage-class: default
+#gitlabConfigStorageClass: default
+#gitlabDataStorageClass: default
+#gitlabRegistryStorageClass: default
+#postgresStorageClass: default
+#redisStorageClass: default
+
 healthCheckToken: 'SXBAQichEJasbtDSygrD'
 # Optional, for GitLab EE images only
 #gitlabEELicense: base64-encoded-license
