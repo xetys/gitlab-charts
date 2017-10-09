@@ -1,3 +1,8 @@
+##############################################################################
+## WARNING: This chart is deprecated, for more information see              ##
+## http://docs.gitlab.com/ee/install/kubernetes/gitlab_chart.html           ##
+##############################################################################
+
 {{- if and (not .Values.postgresql.enabled) (not .Values.dbHost) }}
 ##############################################################################
 ## WARNING: You have not specified a Database Host to connect to.           ##
