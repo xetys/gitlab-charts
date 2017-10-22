@@ -20,8 +20,8 @@
 nameOverride: gitlab
 # `ce` or `ee`
 gitlab: ce
-gitlabCEImage: gitlab/gitlab-ce:9.5.2-ce.0
-gitlabEEImage: gitlab/gitlab-ee:9.5.2-ee.0
+gitlabCEImage: gitlab/gitlab-ce:10.1.0-ce.0
+gitlabEEImage: gitlab/gitlab-ee:10.1.0-ee.0
 postgresPassword: NDl1ZjNtenMxcWR6NXZnbw==
 initialSharedRunnersRegistrationToken: "tQtCbx5UZy_ByS7FyzUH"
 mattermostAppSecret: NDl1ZjNtenMxcWR6NXZnbw==
@@ -30,7 +30,7 @@ redisImage: redis:3.2.10
 redisDedicatedStorage: true
 #redisStorageSize: 5Gi
 redisAccessMode: ReadWriteOnce
-postgresImage: postgres:9.6.3
+postgresImage: postgres:9.6.5
 # If you disable postgresDedicatedStorage, you should consider bumping up gitlabRailsStorageSize
 postgresDedicatedStorage: true
 postgresAccessMode: ReadWriteOnce
@@ -41,7 +41,7 @@ gitlabRegistryAccessMode: ReadWriteOnce
 #gitlabRegistryStorageSize: 30Gi
 gitlabConfigAccessMode: ReadWriteOnce
 #gitlabConfigStorageSize: 1Gi
-gitlabRunnerImage: gitlab/gitlab-runner:alpine-v9.5.0
+gitlabRunnerImage: gitlab/gitlab-runner:alpine-v10.1.0
 # Valid values for provider are `gke` for Google Container Engine. Leaving it blank (or any othervalue) will disable fast disk options.
 provider: gke
 
