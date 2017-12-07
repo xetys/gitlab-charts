@@ -1,0 +1,16 @@
+gitlab: ce
+provider: own
+
+
+gitlabConfigStorageClass: default
+gitlabDataStorageClass: default
+gitlabRegistryStorageClass: default
+postgresStorageClass: default
+redisStorageClass: default
+
+
+gitlab-runner:
+  checkInterval: 1
+  runnerRegistrationToken: "tQtCbx5UZy_ByS7FyzUH"
+  runners:
+    privileged: true

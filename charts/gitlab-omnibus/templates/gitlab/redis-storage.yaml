@@ -9,6 +9,7 @@ metadata:
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
   {{- if .Values.redisStorageClass }}
+  annotations:
     volume.beta.kubernetes.io/storage-class: {{ .Values.redisStorageClass | quote }}
   {{- else if (eq .Values.provider "gke") }}
   annotations:

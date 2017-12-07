@@ -1,0 +1,24 @@
+---
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: gitlab-admin
+rules:
+  - apiGroups: [""] # The API group "" indicates the core API Group.
+    resources: ["*"]
+    verbs: ["*"]
+
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: gitlab-admin
+subjects:
+  - kind: ServiceAccount # May be "User", "Group" or "ServiceAccount"
+    name: default
+    namespace: {{default "default" .Namespace}}
+roleRef:
+  kind: Role
+  name: gitlab-admin
+  apiGroup: rbac.authorization.k8s.io
+

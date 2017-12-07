@@ -8,6 +8,7 @@ metadata:
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
   {{- if .Values.gitlabConfigStorageClass }}
+  annotations:
     volume.beta.kubernetes.io/storage-class: {{ .Values.gitlabConfigStorageClass | quote }}
   {{- else if (eq .Values.provider "gke") }}
   annotations:
